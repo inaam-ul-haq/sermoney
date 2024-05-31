@@ -108,6 +108,7 @@
          </div>
      @endif
      <div class="container">
+
          <form action="{{ route('form.submit') }}" method="POST">
              @csrf
              <div class="row">
@@ -124,20 +125,34 @@
                          aria-valuemin="0" aria-valuemax="100">
                          <div class="progress-bar bg-warning" style="width: 75%">
                          </div>
+
                      </div>
                      <div class="row mt-5 mb-3">
+                         @if (session('error'))
+                             <div class="alert alert-danger" role="alert">
+                                 {{ session('error') }}
+                             </div>
+                         @endif
+
+                         @if (session('success'))
+                             <div class="alert alert-success" role="alert">
+                                 {{ session('success') }}
+                             </div>
+                         @endif
+
                          <div class="col-md-6">
+
                              <label for="po-box" class="form-label font-cust">PO
                                  BOX
                                  <span class="star">*</span></label>
                              <input type="text" class="form-control ph-cust" id="po-box"
-                                 placeholder="The PO BOX number that arrived by mail" name="pobox">
+                                 placeholder="The PO BOX number that arrived by mail" name="pobox"required>
                          </div>
                          <div class="col-md-6">
                              <label for="email" class="form-label font-cust">Email
                                  <span class="star">*</span></label>
                              <input type="text" class="form-control" id="email" placeholder="Email"
-                                 name="email">
+                                 name="email"required>
                          </div>
                      </div>
                      <div class="row mt-3 mb-3">
@@ -145,13 +160,13 @@
                              <label for="name" class="form-label font-cust">Name
                                  <span class="star">*</span></label>
                              <input type="text" class="form-control" id="name" placeholder="Name"
-                                 name="name">
+                                 name="name"required>
                          </div>
                          <div class="col-md-6">
                              <label for="last-name" class="form-label font-cust">Last
                                  name <span class="star">*</span></label>
                              <input type="text" class="form-control" id="last-name" placeholder="Surname"
-                                 name="last_name">
+                                 name="last_name"required>
                          </div>
                      </div>
                      <div class="row mt-3 mb-3">
@@ -159,13 +174,13 @@
                              <label for="mobile-phone" class="form-label font-cust">Mobile
                                  phone <span class="star">*</span></label>
                              <input type="text" class="form-control" id="mobile-phone"
-                                 placeholder="Cell Phone Number, include +507 before the Number" name="mob_no">
+                                 placeholder="Cell Phone Number, include +507 before the Number" name="mob_no"required>
                          </div>
                          <div class="col-md-6">
                              <label for="branch" class="form-label font-cust">Home/Office No
                                  <span class="star">*</span></label>
                              <input type="text" class="form-control" id="branch" placeholder="office no"
-                                 name="ofice_no">
+                                 name="office_no"required>
                          </div>
                      </div>
 
@@ -174,13 +189,13 @@
                              <label for="mobile-phone" class="form-label font-cust">Id Passport
                                  <span class="star">*</span></label>
                              <input type="text" class="form-control" id="mobile-phone"
-                                 placeholder="passport or id no" name="mob_no" name="id_pass">
+                                 placeholder="passport or id no" name="id_pass"required>
                          </div>
                          <div class="col-md-6">
                              <label for="branch" class="form-label font-cust">Country
                                  <span class="star">*</span></label>
                              <input type="text" class="form-control" id="branch" placeholder="Country name"
-                                 name="country">
+                                 name="country"required>
                          </div>
                      </div>
                      <div class="row mt-3 mb-3">
@@ -188,13 +203,13 @@
                              <label for="province" class="form-label font-cust">Province
                                  <span class="star">*</span></label>
                              <input type="text" class="form-control" id="province" placeholder="Province"
-                                 name="province">
+                                 name="province"required>
                          </div>
                          <div class="col-md-6">
                              <label for="city" class="form-label font-cust">City
                                  <span class="star">*</span></label>
                              <input type="text" class="form-control" id="city" placeholder="City"
-                                 name="city">
+                                 name="city"required>
                          </div>
                      </div>
                      <div class="row mt-3 mb-3">
@@ -202,27 +217,28 @@
                              <label for="company" class="form-label font-cust">Company <span
                                      class="star">*</span></label>
                              <input type="text" class="form-control" id="company" placeholder="Company Name"
-                                 name="company">
+                                 name="company"required>
                          </div>
                          <div class="col-md-6">
                              <label for="address" class="form-label font-cust">Delivery
                                  address <span class="star">*</span></label>
                              <input type="text" class="form-control" id="address" name="del_address"
-                                 placeholder="Address">
+                                 placeholder="Address"required>
                          </div>
                      </div>
                      <div class="row mt-3 mb-3">
                          <div class="col-md-6">
                              <label for="password" class="form-label font-cust">Password
                                  <span class="star">*</span></label>
-                             <input type="password" class="form-control" id="password" name="password"
-                                 placeholder="Password">
+                             <input type="password" class="form-control" name="password" id="password"
+                                 placeholder="Password" required>
+
                          </div>
                          <div class="col-md-6">
-                             <label for="confirm-password" class="form-label font-cust">Confirm Password
+                             <label for="password_confirmation" class="form-label font-cust">Confirm Password
                                  <span class="star">*</span></label>
-                             <input type="password" class="form-control" id="confirm-password"
-                                 name="confirm_password" placeholder="Confirm Password">
+                             <input type="password" class="form-control" id="password_confirmation"
+                                 name="password_confirmation" placeholder="Confirm Password" required>
                          </div>
                      </div>
                  </div>

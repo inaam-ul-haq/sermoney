@@ -16,24 +16,39 @@ class RegistrationController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'pobox' => 'required|string',
-            'email' => 'required|email|unique:registrations,email',
-            'name' => 'required|string',
-            'last_name' => 'required|string',
-            'mob_no' => 'required|string',
-            'ofice_no' => 'required|string',
-            'id_pass' => 'required|string',
-            'country' => 'required|string',
-            'province' => 'required|string',
-            'city' => 'required|string',
-            'company' => 'required|string',
-            'del_address' => 'required|string',
-            'password' => 'required|string|min:8',
+         // Check if the PoBox entry exists with the given email and pobox_no
+    $poBox = PoBox::where('pobox_no', $request->pobox)->where('email', $request->email)->first();
+
+    // If the PoBox entry does not exist, redirect back with an error message
+    if (!$poBox) {
+        return redirect()->back()->with('error', 'The provided P.O. Box number or email is incorrect. Please provide valid details.');
+    }
+
+    // Create a new registration if email and P.O. Box are valid
+    try {
+        Registration::create([
+            'pobox' => $request->pobox,
+            'email' => $request->email,
+            'name' => $request->name,
+            'last_name' => $request->last_name,
+            'mob_no' => $request->mob_no,
+            'office_no' => $request->office_no,
+            'id_pass' => $request->id_pass,
+            'country' => $request->country,
+            'province' => $request->province,
+            'city' => $request->city,
+            'company' => $request->company,
+            'del_address' => $request->del_address,
+            'password' => bcrypt($request->password),
         ]);
 
-        Registration::create($request->all());
+        // Redirect to the index route with a success message
+        return redirect()->route('carga')->with('success', 'Registration successful!');
+    } catch (\Exception $e) {
+        // Log the error for debugging
+        Log::error('An error occurred while creating the registration: ' . $e->getMessage());
 
-        return redirect()->route('registrations.create')->with('success', 'Registration successful.');
+        return redirect()->back()->with('error', 'An error occurred while creating the registration. Please try again.');
     }
 }
+    }

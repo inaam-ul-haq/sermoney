@@ -6,14 +6,14 @@ use App\Models\PoBox;
 use App\Models\Registration;
 use Illuminate\Http\Request;
 
+
 class PoBoxNoRegController extends Controller
 {
     public function create()
     {
         return view('po-register');
     }
-
-    public function store(Request $request)
+public function store(Request $request)
     {
         // Check if the email exists in the PoBox table
         $poBox = PoBox::where('email', $request->email)->first();;
@@ -29,7 +29,7 @@ class PoBoxNoRegController extends Controller
                 'name' => $request->name,
                 'last_name' => $request->last_name,
                 'mob_no' => $request->mob_no,
-                'ofice_no' => $request->ofice_no,
+                'office_no' => $request->office_no,
                 'id_pass' => $request->id_pass,
                 'country' => $request->country,
                 'province' => $request->province,
