@@ -16,7 +16,7 @@ class CreateRegistrationsTable extends Migration
             $table->string('name');
             $table->string('last_name');
             $table->string('mob_no');
-            $table->string('ofice_no');
+            $table->string('office_no');
             $table->string('id_pass');
             $table->string('country');
             $table->string('province');
@@ -24,6 +24,7 @@ class CreateRegistrationsTable extends Migration
             $table->string('company');
             $table->string('del_address');
             $table->string('password');
+             $table->string('confirm_password');
             $table->timestamps();
         });
     }

@@ -21,14 +21,14 @@ class Registration extends Model
         'name',
         'last_name',
         'mob_no',
-        'ofice_no',
+        'office_no',
         'id_pass',
         'country',
         'province',
         'city',
         'company',
         'del_address',
-        'password'
+        'password',
     ];
 
     // Optionally, you can define any attribute casting or relationships if needed

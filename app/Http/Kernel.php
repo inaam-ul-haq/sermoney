@@ -47,6 +47,7 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         // ...
         // 'check.conditions' => \App\Http\Middleware\CheckConditions::class,
+        //  'register.user' => \App\Http\Middleware\RegisterUser::class,
     ];
 
     /**
@@ -68,5 +69,6 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
     ];
 }
