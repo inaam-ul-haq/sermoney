@@ -108,7 +108,6 @@
          </div>
      @endif
      <div class="container">
-
          <form action="{{ route('form.submit') }}" method="POST">
              @csrf
              <div class="row">
@@ -123,9 +122,7 @@
                      </div>
                      <div class="progress" role="progressbar" aria-label="Warning example" aria-valuenow="75"
                          aria-valuemin="0" aria-valuemax="100">
-                         <div class="progress-bar bg-warning" style="width: 75%">
-                         </div>
-
+                         <div class="progress-bar bg-warning" style="width: 75%"></div>
                      </div>
                      <div class="row mt-5 mb-3">
                          @if (session('error'))
@@ -141,75 +138,73 @@
                          @endif
 
                          <div class="col-md-6">
-
-                             <label for="po-box" class="form-label font-cust">PO
-                                 BOX
-                                 <span class="star">*</span></label>
+                             <label for="po-box" class="form-label font-cust">PO BOX <span
+                                     class="star">*</span></label>
                              <input type="text" class="form-control ph-cust" id="po-box"
-                                 placeholder="The PO BOX number that arrived by mail" name="pobox"required>
+                                 placeholder="The PO BOX number that arrived by mail" name="pobox" required>
                          </div>
                          <div class="col-md-6">
-                             <label for="email" class="form-label font-cust">Email
-                                 <span class="star">*</span></label>
+                             <label for="email" class="form-label font-cust">Email <span
+                                     class="star">*</span></label>
                              <input type="text" class="form-control" id="email" placeholder="Email"
-                                 name="email"required>
+                                 name="email" required>
                          </div>
                      </div>
                      <div class="row mt-3 mb-3">
                          <div class="col-md-6">
-                             <label for="name" class="form-label font-cust">Name
-                                 <span class="star">*</span></label>
-                             <input type="text" class="form-control" id="name" placeholder="Name"
-                                 name="name"required>
+                             <label for="name" class="form-label font-cust">Name <span
+                                     class="star">*</span></label>
+                             <input type="text" class="form-control" id="name" placeholder="Name" name="name"
+                                 required>
                          </div>
                          <div class="col-md-6">
-                             <label for="last-name" class="form-label font-cust">Last
-                                 name <span class="star">*</span></label>
+                             <label for="last-name" class="form-label font-cust">Last name <span
+                                     class="star">*</span></label>
                              <input type="text" class="form-control" id="last-name" placeholder="Surname"
-                                 name="last_name"required>
+                                 name="last_name" required>
                          </div>
                      </div>
                      <div class="row mt-3 mb-3">
                          <div class="col-md-6">
-                             <label for="mobile-phone" class="form-label font-cust">Mobile
-                                 phone <span class="star">*</span></label>
+                             <label for="mobile-phone" class="form-label font-cust">Mobile phone <span
+                                     class="star">*</span></label>
                              <input type="text" class="form-control" id="mobile-phone"
-                                 placeholder="Cell Phone Number, include +507 before the Number" name="mob_no"required>
+                                 placeholder="Cell Phone Number, include +507 before the Number" name="mob_no"
+                                 required>
                          </div>
                          <div class="col-md-6">
-                             <label for="branch" class="form-label font-cust">Home/Office No
-                                 <span class="star">*</span></label>
+                             <label for="branch" class="form-label font-cust">Home/Office No <span
+                                     class="star">*</span></label>
                              <input type="text" class="form-control" id="branch" placeholder="office no"
-                                 name="office_no"required>
+                                 name="office_no" required>
                          </div>
                      </div>
-
                      <div class="row mt-3 mb-3">
                          <div class="col-md-6">
-                             <label for="mobile-phone" class="form-label font-cust">Id Passport
-                                 <span class="star">*</span></label>
+                             <label for="mobile-phone" class="form-label font-cust">Id Passport <span
+                                     class="star">*</span></label>
                              <input type="text" class="form-control" id="mobile-phone"
-                                 placeholder="passport or id no" name="id_pass"required>
+                                 placeholder="passport or id no" name="id_pass" required>
                          </div>
                          <div class="col-md-6">
-                             <label for="branch" class="form-label font-cust">Country
-                                 <span class="star">*</span></label>
+                             <label for="branch" class="form-label font-cust">Country <span
+                                     class="star">*</span></label>
                              <input type="text" class="form-control" id="branch" placeholder="Country name"
-                                 name="country"required>
+                                 name="country" required>
                          </div>
                      </div>
                      <div class="row mt-3 mb-3">
                          <div class="col-md-6">
-                             <label for="province" class="form-label font-cust">Province
-                                 <span class="star">*</span></label>
+                             <label for="province" class="form-label font-cust">Province <span
+                                     class="star">*</span></label>
                              <input type="text" class="form-control" id="province" placeholder="Province"
-                                 name="province"required>
+                                 name="province" required>
                          </div>
                          <div class="col-md-6">
-                             <label for="city" class="form-label font-cust">City
-                                 <span class="star">*</span></label>
+                             <label for="city" class="form-label font-cust">City <span
+                                     class="star">*</span></label>
                              <input type="text" class="form-control" id="city" placeholder="City"
-                                 name="city"required>
+                                 name="city" required>
                          </div>
                      </div>
                      <div class="row mt-3 mb-3">
@@ -217,26 +212,25 @@
                              <label for="company" class="form-label font-cust">Company <span
                                      class="star">*</span></label>
                              <input type="text" class="form-control" id="company" placeholder="Company Name"
-                                 name="company"required>
+                                 name="company" required>
                          </div>
                          <div class="col-md-6">
-                             <label for="address" class="form-label font-cust">Delivery
-                                 address <span class="star">*</span></label>
+                             <label for="address" class="form-label font-cust">Delivery address <span
+                                     class="star">*</span></label>
                              <input type="text" class="form-control" id="address" name="del_address"
-                                 placeholder="Address"required>
+                                 placeholder="Address" required>
                          </div>
                      </div>
                      <div class="row mt-3 mb-3">
                          <div class="col-md-6">
-                             <label for="password" class="form-label font-cust">Password
-                                 <span class="star">*</span></label>
+                             <label for="password" class="form-label font-cust">Password <span
+                                     class="star">*</span></label>
                              <input type="password" class="form-control" name="password" id="password"
                                  placeholder="Password" required>
-
                          </div>
                          <div class="col-md-6">
-                             <label for="password_confirmation" class="form-label font-cust">Confirm Password
-                                 <span class="star">*</span></label>
+                             <label for="password_confirmation" class="form-label font-cust">Confirm Password <span
+                                     class="star">*</span></label>
                              <input type="password" class="form-control" id="password_confirmation"
                                  name="password_confirmation" placeholder="Confirm Password" required>
                          </div>
@@ -247,15 +241,7 @@
                          <div class="col-lg-3 col-md-5"></div>
                          <div class="col-lg-4 col-md-5">
                              <div class="section-robot d-flex justify-content-between align-items-center">
-                                 <div class="form-check">
-                                     <input class="form-check-input" type="checkbox" value=""
-                                         id="flexCheckChecked" checked>
-                                     <label class="form-check-label" for="flexCheckChecked">
-                                         I'm not a robot
-                                     </label>
-                                 </div>
-                                 <img src="./asset/image/RecaptchaLogo 1.png" class="image-fluid RECT"
-                                     alt="Recaptcha Logo">
+                                 {!! NoCaptcha::display() !!}
                              </div>
                          </div>
                          <div class="col-lg-5 col-md-2"></div>
@@ -265,15 +251,16 @@
                      <div class="row mt-3 mb-5">
                          <div class="col-lg-3 col-md-5"></div>
                          <div class="col-lg-3 col-md-3">
-                             <button type="submit" class="btn btn-warning btn-lg custom-btn">Activate
-                                 PO BOX</button>
+                             <button type="submit" class="btn btn-warning btn-lg custom-btn">Activate PO BOX</button>
                          </div>
                          <div class="col-lg-6 col-md-4"></div>
                      </div>
                  </div>
              </div>
          </form>
+         {!! NoCaptcha::renderJs() !!}
      </div>
+
 
 
 
