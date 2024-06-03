@@ -253,7 +253,7 @@
                          <div class="col-lg-3 col-md-3">
                              <button type="submit" class="btn btn-warning btn-lg custom-btn">Activate PO BOX</button>
                          </div>
-                         <div class="col-lg-6 col-md-4"></div>
+                         <div class="col-lg-6 col-md-4"> </div>
                      </div>
                  </div>
              </div>
