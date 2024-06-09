@@ -11,10 +11,10 @@ class CreateRegistrationsTable extends Migration
     {
         Schema::create('registrations', function (Blueprint $table) {
             $table->id();
+             $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('pobox');
-            $table->string('email');
-            $table->string('name');
-            $table->string('last_name');
+            $table->string('username');
             $table->string('mob_no');
             $table->string('office_no');
             $table->string('id_pass');
@@ -23,8 +23,8 @@ class CreateRegistrationsTable extends Migration
             $table->string('city');
             $table->string('company');
             $table->string('del_address');
-            $table->string('password');
-             $table->string('confirm_password');
+            $table->enum('refrence', ['Add', 'Staf', 'RepostingAgents']); // Add your allowed values here
+            $table->enum('news_platform', ['Google', 'FaceBook', 'Insta']);
             $table->timestamps();
         });
     }

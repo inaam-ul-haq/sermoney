@@ -16,10 +16,8 @@ class Registration extends Model
 
     // Specify the attributes that are mass assignable
     protected $fillable = [
+        'user_id',
         'pobox',
-        'email',
-        'name',
-        'last_name',
         'mob_no',
         'office_no',
         'id_pass',
@@ -29,7 +27,14 @@ class Registration extends Model
         'company',
         'del_address',
         'password',
+        'refrence',
+        'news_platform',
+        'username'
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     // Optionally, you can define any attribute casting or relationships if needed
 }

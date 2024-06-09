@@ -21,6 +21,7 @@
                         <!-- Registrate Gratis -->
                         REGÍSTRATE GRATIS
                     </button>
+
                 </div>
                 <div class="right-section col-lg-6 col-md-6 col-sm-12 col-12 mt-5 d-flex align-items-center">
                     <img src="assets/images/hero-section/heroleft-image.png" class="img-fluid hero-right w-100">

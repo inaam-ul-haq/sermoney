@@ -4,20 +4,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Registration;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 use NoCaptcha\Laravel\Facades\NoCaptcha;
+use Illuminate\Support\Facades\Validator;
 
 class RegistrationController extends Controller
 {
+
     public function create()
     {
         return view('registrations.create');
     }
 public function store(Request $request)
     {
+
         // Validate the form inputs and reCAPTCHA
         $validator = Validator::make($request->all(), [
             'pobox' => 'required|string',
@@ -50,11 +54,16 @@ public function store(Request $request)
 
         // Create a new registration if email and P.O. Box are valid
         try {
-            Registration::create([
-                'pobox' => $request->pobox,
-                'email' => $request->email,
+
+            $user = User::create([
                 'name' => $request->name,
-                'last_name' => $request->last_name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
+
+            Registration::create([
+                'user_id' => $user->id,
+                'pobox' => $request->pobox,
                 'mob_no' => $request->mob_no,
                 'office_no' => $request->office_no,
                 'id_pass' => $request->id_pass,
@@ -63,11 +72,13 @@ public function store(Request $request)
                 'city' => $request->city,
                 'company' => $request->company,
                 'del_address' => $request->del_address,
-                'password' => bcrypt($request->password),
+                'refrence' => $request->refrence,
+                'news_platform' => $request->news_platform,
+
             ]);
 
             // Redirect to the index route with a success message
-            return redirect()->route('carga')->with('success', 'Registration successful!');
+            return redirect()->route('login')->with('success', 'Registration successful!');
         } catch (\Exception $e) {
             // Log the error for debugging
             Log::error('An error occurred while creating the registration: ' . $e->getMessage());
@@ -75,4 +86,29 @@ public function store(Request $request)
             return redirect()->back()->with('error', 'An error occurred while creating the registration. Please try again.');
         }
     }
+    public function update(Request $request)
+    {
+        $request->validate([
+            'pobox' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'mob_no' => 'required|string|max:255',
+            'office_no' => 'required|string|max:255',
+            'id_pass' => 'required|string|max:255',
+            'country' => 'required|string|max:255',
+            'province' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'company' => 'required|string|max:255',
+            'del_address' => 'required|string|max:255',
+            'password' => 'required|string|min:8|confirmed',
+            'confirm_password' => 'required|string|min:8',
+        ]);
+
+        $user = auth()->user();
+        $user->update($request->all());
+
+        return redirect()->route('profile.edit')->with('success', 'Profile updated successfully');
+    }
+
     }
