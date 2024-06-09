@@ -1,4 +1,22 @@
-<x-guest-layout>
+ <!DOCTYPE html>
+ <html lang="en">
+
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+     </script>
+     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+     <title>Document</title>
+     <style>
+         .step {
+             font-family: "Inter", sans-serif;
+             font-size: 14px;
+             font-weight: 700;
+             line-height: 16.94px;<x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -45,3 +63,164 @@
         </div>
     </form>
 </x-guest-layout>
+
+             text-align: left;
+         }
+
+         .dash {
+             font-family: "Inter", sans-serif;
+             font-size: 14px;
+             font-weight: 400;
+             line-height: 16.94px;
+             text-align: left;
+         }
+
+         .steptext {
+             font-family: "Inter", sans-serif;
+             font-size: 14px;
+             font-weight: 500;
+             line-height: 16.94px;
+             text-align: left;
+             color: #000000B2;
+         }
+
+         .percentage {
+             font-family: "Inter", sans-serif;
+             font-weight: 400;
+             line-height: 16.94px;
+             text-align: left;
+             font-size: 14px;
+             width: 40px;
+             height: 21px;
+             border-radius: 5px;
+             color: #000000B2;
+             background: lightgray;
+             opacity: 1;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             margin-top: 10px;
+         }
+
+         .font-cust {
+             font-family: "Inter", sans-serif;
+             font-size: 14px;
+             font-weight: 500;
+             line-height: 19.36px;
+         }
+
+         .star {
+             font-family: "Inter", sans-serif;
+             font-size: 16px;
+             font-weight: 500;
+             line-height: 19.36px;
+             color: #FF0000;
+         }
+
+         .custom-btn {
+             font-family: "Inter", sans-serif;
+             font-size: 14px;
+             font-weight: 700;
+             color: #FFFFFF;
+             width: 180px;
+             height: 59px;
+             border-radius: 10px;
+         }
+
+         .form-control::placeholder {
+             font-size: 13px;
+         }
+
+         .RECT {
+             width: 76px;
+             height: 76px;
+         }
+
+         .section-robot {
+             border: 1px solid #0000001A;
+             background: #0000000D;
+             padding: 10px;
+         }
+     </style>
+ </head>
+
+ <body>
+     @if ($errors->any())
+         <div class="alert alert-danger">
+             <ul>
+                 @foreach ($errors->all() as $error)
+                     <li>{{ $error }}</li>
+                 @endforeach
+             </ul>
+         </div>
+     @endif
+     <div class="container">
+         <form action="{{ route('login') }}" method="POST">
+             @csrf
+             <div class="row">
+                 <div class="col-lg-3 col-md-5 mt-2">
+                     <img src="asset/image/image 2-Photoroom 1.png" class="img-fluid" alt="Image 1">
+                 </div>
+                 <div class="col-lg-9 col-md-7 d-flex flex-column">
+                     <div class="row mt-5 mb-3">
+                         @if (session('error'))
+                             <div class="alert alert-danger" role="alert">
+                                 {{ session('error') }}
+                             </div>
+                         @endif
+
+                         @if (session('success'))
+                             <div class="alert alert-success" role="alert">
+                                 {{ session('success') }}
+                             </div>
+                         @endif
+                         <div class="col-md-6">
+                             <label for="email" class="form-label font-cust">Email <span
+                                     class="star">*</span></label>
+                             <input type="text" class="form-control" id="email" placeholder="Email"
+                                 name="email" required>
+                         </div>
+                     </div>
+
+                     <div class="row mt-3 mb-3">
+                         <div class="col-md-6">
+                             <label for="password" class="form-label font-cust">Password <span
+                                     class="star">*</span></label>
+                             <input type="password" class="form-control" name="password" id="password"
+                                 placeholder="Password" required>
+                         </div>
+
+                     </div>
+                 </div>
+                 <div class="container">
+                     <div class="row mt-3 mb-3">
+                         <div class="col-lg-3 col-md-5"></div>
+                         <div class="col-lg-4 col-md-5">
+                             <div class="section-robot d-flex justify-content-between align-items-center">
+                                 {!! NoCaptcha::display() !!}
+                             </div>
+                         </div>
+                         <div class="col-lg-5 col-md-2"></div>
+                     </div>
+                 </div>
+                 <div class="container">
+                     <div class="row mt-3 mb-5">
+                         <div class="col-lg-3 col-md-5"></div>
+                         <div class="col-lg-3 col-md-3">
+                             <button type="submit" class="btn btn-warning btn-lg custom-btn">Activate PO BOX</button>
+                         </div>
+                         <div class="col-lg-6 col-md-4"> </div>
+                     </div>
+                 </div>
+             </div>
+         </form>
+         {!! NoCaptcha::renderJs() !!}
+     </div>
+
+
+
+
+
+ </body>
+
+ </html>

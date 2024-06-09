@@ -26,7 +26,7 @@ Route::get('/', function () {
 
 
 Route::get('plan', function () {
-    return view('plans');
+    return view('Plans');
 })->name('plan2');
 
 
@@ -35,15 +35,19 @@ Route::get('Beneficious', function () {
 });
 
 
-Route::get('service', function () {
-    return view('service');
+Route::get('/service', function () {
+    return view('Service');
 });
 Route::get('/dashboard', function () {
     return view('dashboard');
+
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/carga', function () {
+        return view('admindashboard/carga');
+    })->name('carga');
+ Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
@@ -58,16 +62,11 @@ Route::post('/register', [PoBoxNoRegController::class, 'store'])->name('register
 Route::get('/po-box', [PoBoxNoController::class, 'createForm']);
 
 
-Route::get('service', function () {
-    return view('service');
-});
 Route::get('index', function () {
     return view('admindashboard/index');
 })->name('index');
 
-Route::get('carga', function () {
-    return view('admindashboard/carga');
-})->name('carga');
+
 
 Route::get('carga2', function () {
     return view('admindashboard/carga2');
@@ -81,10 +80,8 @@ Route::get('misl', function () {
     return view('admindashboard/misl');
 })->name('misl');
 
-Route::get('perfil', function () {
-    return view('admindashboard/perfil');
-})->name('perfil');
-
+Route::get('perfil', [ProfileController::class, 'index'])->name('perfil');
+Route::post('/profile/update', [ProfileController::class, 'update'])->name('update');
 
 
 Route::get('/registrations/create', [RegistrationController::class, 'create'])->name('registrations.create');

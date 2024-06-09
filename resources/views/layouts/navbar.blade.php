@@ -4,6 +4,9 @@
         <a class="text-white me-4" href="#">Rastrea tu paquete</a>
         <a class="text-white me-4" href="#">Calcula tu flete</a>
         <a class="text-white me-4" href="#">Método de Pago</a>
+        <a href="{{route('login')}}" type="button" class="text-white me-4">
+                Login
+        </a>
         <img src="assets/images/topbar/panama 2 (1).png" class="img-fluid me-3" />
         <img src="assets/images/topbar/united-states 2 (2).png" class="img-fluid me-3" />
     </div>
@@ -49,9 +52,12 @@
                 </li>
 
             </ul>
+
+
             <button type="button" class="navbar-button btn p-3 px-3">
                 Regístrate Gratis
             </button>
+
         </div>
     </div>
 </nav>
