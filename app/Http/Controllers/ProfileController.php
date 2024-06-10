@@ -22,6 +22,14 @@ class ProfileController extends Controller
         $user = Auth::user();
 
         $register = Registration::where('user_id', $user->id)->first();
+        return view('userdashboard.profile', compact('user', 'register'));
+    }
+
+    public function adminPanel()
+    {
+        $user = Auth::user();
+
+        $register = Registration::where('user_id', $user->id)->first();
         return view('admindashboard.perfil', compact('user', 'register'));
     }
     public function edit(Request $request): View

@@ -41,12 +41,12 @@
 
                                         <div class="col d-flex flex-column">
                                             <div class="row mt-2">
-                                                {{-- <div class="col-md-6">
+                                                <div class="col-md-6">
                                                     <label for="po-box" class="form-label font-cust">Código <span
                                                             class="star">*</span></label>
                                                     <input type="text" class="form-control bg-custom" id="po-box"
                                                         value="{{ old('pobox', $register->pobox) }}" readonly>
-                                                </div> --}}
+                                                </div>
 
                                                 <div class="col-md-6">
                                                     <label for="creation-date"

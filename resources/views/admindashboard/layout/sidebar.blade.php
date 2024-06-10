@@ -19,7 +19,7 @@
          </a>
 
      </div>
-
+@role('admin')
      <ul class="menu-inner py-1 d-flex align-items-center">
          <li class="menu-item mt-2 text-center ">
              <a href="{{ route('fractuion') }}" class="menu-link">
@@ -89,6 +89,7 @@
              </a>
          </li>
 
+@endrole
          <li class="line menu-item my-2"></li>
          <li class="menu-item">
              <a href="{{ route('perfil') }}" class="menu-link">

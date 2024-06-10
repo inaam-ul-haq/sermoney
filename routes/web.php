@@ -38,21 +38,31 @@ Route::get('Beneficious', function () {
 Route::get('/service', function () {
     return view('Service');
 });
-Route::get('/dashboard', function () {
-    return view('dashboard');
-
-})->middleware(['auth', 'verified'])->name('dashboard');
-
+require __DIR__ . '/auth.php';
 Route::middleware('auth')->group(function () {
+
+    Route::get('useerpanel', function () {
+        return view('admindashboard/index');
+    })->name('useerpanel');
+
+
+});
+Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/carga', function () {
         return view('admindashboard/carga');
     })->name('carga');
- Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+    Route::get('admin', function () {
+        return view('admindashboard/index');
+    })->name('index');
+    Route::get('/dashboard', function () {
+        return view('dashboard');
 
-require __DIR__ . '/auth.php';
+    });
+    Route::get('/adminprofile', [ProfileController::class, ' adminPanel'])->name('adminrofile');
+    Route::get('/adminprofile', [ProfileController::class, 'edit'])->name('adminprofile.edit');
+    Route::patch('/adminprofile', [ProfileController::class, 'update'])->name('adminprofile.update');
+    Route::delete('/adminprofile', [ProfileController::class, 'destroy'])->name('adminprofile.destroy');
+});
 
 
 Route::post('/po-box', [PoBoxNoController::class, 'store'])->name('po-box.store');
@@ -61,12 +71,9 @@ Route::post('/submit', [PoBoxNoRegController::class, 'store'])->name('form.submi
 Route::post('/register', [PoBoxNoRegController::class, 'store'])->name('register.store');
 Route::get('/po-box', [PoBoxNoController::class, 'createForm']);
 
-
-Route::get('index', function () {
-    return view('admindashboard/index');
-})->name('index');
-
-
+ Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 Route::get('carga2', function () {
     return view('admindashboard/carga2');

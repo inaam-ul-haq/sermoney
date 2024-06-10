@@ -23,8 +23,8 @@ class CreateRegistrationsTable extends Migration
             $table->string('city');
             $table->string('company');
             $table->string('del_address');
-            $table->enum('refrence', ['Add', 'Staf', 'RepostingAgents']); // Add your allowed values here
-            $table->enum('news_platform', ['Google', 'FaceBook', 'Insta']);
+            $table->enum('refrence', ['Add', 'Staf', 'RepostingAgents'])->default('nullable'); // Add your allowed values here
+            $table->enum('news_platform', ['Google', 'FaceBook', 'Insta'])->default('nullable');
             $table->timestamps();
         });
     }
