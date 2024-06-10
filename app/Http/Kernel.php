@@ -48,6 +48,8 @@ class Kernel extends HttpKernel
         // ...
         // 'check.conditions' => \App\Http\Middleware\CheckConditions::class,
         //  'register.user' => \App\Http\Middleware\RegisterUser::class,
+        // 'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+
     ];
 
     /**
@@ -69,6 +71,9 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
+        'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
+        'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
 
     ];
 }
