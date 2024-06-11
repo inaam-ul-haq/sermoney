@@ -58,8 +58,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         return view('dashboard');
 
     });
-    Route::get('/adminprofile', [ProfileController::class, ' adminPanel'])->name('adminrofile');
-    Route::get('/adminprofile', [ProfileController::class, 'edit'])->name('adminprofile.edit');
+
+    Route::get('/adminprofile', [ProfileController::class, 'adminPanel'])->name('adminprofile');
+    Route::get('/adminprofile/edit', [ProfileController::class, 'edit'])->name('adminprofile.edit');
     Route::patch('/adminprofile', [ProfileController::class, 'update'])->name('adminprofile.update');
     Route::delete('/adminprofile', [ProfileController::class, 'destroy'])->name('adminprofile.destroy');
 });
@@ -71,7 +72,7 @@ Route::post('/submit', [PoBoxNoRegController::class, 'store'])->name('form.submi
 Route::post('/register', [PoBoxNoRegController::class, 'store'])->name('register.store');
 Route::get('/po-box', [PoBoxNoController::class, 'createForm']);
 
- Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 

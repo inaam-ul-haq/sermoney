@@ -47,15 +47,24 @@
                                                     <input type="text" class="form-control bg-custom" id="po-box"
                                                         value="{{ old('pobox', $register->pobox) }}" readonly>
                                                 </div> --}}
-
+                                                @if(!$user->hasRole('admin'))
+                                        <div class="col-md-6">
+                                            <label for="po-box" class="form-label font-cust">Código <span class="star">*</span></label>
+                                            {{-- <input type="text" class="form-control bg-custom" id="po-box" value="{{ old('pobox', $register->pobox) }}" readonly> --}}
+                                        </div>
+                                    @endif
                                                 <div class="col-md-6">
+                                                    <label for="creation-date" class="form-label font-cust mt-md-0 mt-3">Fecha de creación <span class="star">*</span></label>
+                                                    {{-- <input type="date" class="form-control bg-custom" id="creation-date" name="creation_date" placeholder="" value="{{ $register ? $register->created_at->toDateString() : '' }}" readonly> --}}
+                                                </div>
+                                                {{-- <div class="col-md-6">
                                                     <label for="creation-date"
                                                         class="form-label font-cust mt-md-0 mt-3">Fecha de creación <span
                                                             class="star">*</span></label>
                                                     <input type="date" class="form-control bg-custom" id="creation-date"
                                                         name="creation_date" placeholder=""
                                                         value="{{ $register->created_at->toDateString() }}" readonly>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                             <div class="row mt-3">
                                                 <div class="col-md-6">
@@ -94,7 +103,7 @@
                                                     <label for="name" class="form-label font-cust">Nombre <span
                                                             class="star">*</span></label>
                                                     <input type="text" class="form-control" id="name"
-                                                        name="name"placeholder="" value="{{ $register->user->name }}">
+                                                        name="name"placeholder="">
                                                 </div>
 
 
@@ -104,8 +113,7 @@
                                                             class="form-label font-cust mt-md-0 mt-3">Teléfono <span
                                                                 class="star">*</span></label>
                                                         <input type="text" class="form-control" id="phone"
-                                                            name="office_no" placeholder=""
-                                                            value="{{ $register->office_no }}">
+                                                            name="office_no" placeholder="">
                                                     </div>
 
                                                 </div>
@@ -115,15 +123,14 @@
                                                 <div class="col-md-6">
                                                     <label for="email" class="form-label font-cust">Correo electrónico
                                                         <span class="star">*</span></label>
-                                                    <input type="text" class="form-control" id="email" name="email"
-                                                        placeholder="{{ $register->user->email }}">
+                                                    <input type="text" class="form-control" id="email" name="email">
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="secondary-phone"
                                                         class="form-label font-cust mt-md-0 mt-3">Teléfono <span
                                                             class="star">*</span></label>
                                                     <input type="text" class="form-control" id="secondary-phone"
-                                                        name="mob_no" placeholder=""value="{{ $register->mob_no }}">
+                                                        name="mob_no" placeholder="">
                                                 </div>
                                             </div>
 
@@ -133,14 +140,14 @@
                                                         entrega
                                                         <span class="star">*</span></label>
                                                     <input type="text" class="form-control" id="del_address"
-                                                        name="del_address" placeholder="{{ $register->del_address }}">
+                                                        name="del_address">
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="secondary-phone"
                                                         class="form-label font-cust mt-md-0 mt-3">Pasaporte<span
                                                             class="star">*</span></label>
                                                     <input type="text" class="form-control" id="secondary-phone"
-                                                        name="id_pass" placeholder=""value="{{ $register->id_pass }}">
+                                                        name="id_pass" placeholder=""value="">
                                                 </div>
                                             </div>
 
@@ -150,14 +157,14 @@
                                                     <label for="username" class="form-label font-cust">Nombre de usuario
                                                         <span class="star">*</span></label>
                                                     <input type="text" class="form-control" id="username"
-                                                        name="username" placeholder="" value="{{ $register->username }}">
+                                                        name="username" placeholder="" >
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="address"
                                                         class="form-label font-cust mt-md-0 mt-3">Dirección <span
                                                             class="star">*</span></label>
                                                     <input type="text" class="form-control" id="address"
-                                                        placeholder=""value="{{ $register->del_address }}"
+                                                        placeholder="" 
                                                         name="del_address">
 
                                                 </div>
