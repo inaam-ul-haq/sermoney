@@ -80,10 +80,18 @@
 </head>
 
 <body>
-    @include('admindashboard.layout.sidebar')
+    @role('admin')
+    <x-Adminsidebar />
+   @endrole
+
+   @role('user')
+   <x-Usersidebar />
+   @endrole
+   
     <main>
         @yield('content')
     </main>
+
 
 
     <!-- Core JS -->
