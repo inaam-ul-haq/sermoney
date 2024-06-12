@@ -91,31 +91,34 @@
                                     <table class="table">
                                         <thead>
                                             <tr class="text-nowrap">
-                                                <th>ITEM</th>
-                                                <th>NÚMERO</th>
-                                                <th>ESTADO</th>
-                                                <th>MONTO</th>
-                                                <th>SUCURSAL</th>
-                                                <th>CREACIÓN</th>
+                                                <th>ARTÍCULO</th>
+                                                <th>NOMBRE</th>
+                                                <th>EMAIL</th>
+                                                <th>NOMBRE DE USUARIO</th>
+                                                <th>PAÍS</th>
+                                                <th>EMPRESA</th>
+                                                <th>ACTION</th>
                                             </tr>
                                         </thead>
                                         <tbody class="table-border-bottom-0">
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>Table cell</td>
-                                                <td>Table cell</td>
-                                                <td>Table cell</td>
-                                                <td>Table cell</td>
-                                                <td>Table cell</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Table cell</td>
-                                                <td>Table cell</td>
-                                                <td>Table cell</td>
-                                                <td>Table cell</td>
-                                                <td>Table cell</td>
-                                            </tr>
+                                            @foreach ($users as $user)
+                                                <tr>
+                                                    {{-- <th scope="row">{{ $index + 1 }}</th> --}}
+                                                    <td>{{ $user->id }}</td>
+                                                    <td>{{ $user->name }}</td>
+                                                    <td>{{ $user->email }}</td>
+                                                    <td>{{ $user->registration->username ?? 'N/A' }}</td>
+                                                    <td>{{ $user->registration->country ?? 'N/A' }}</td>
+                                                    <td>{{ $user->registration->company ?? 'N/A' }}</td>
+                                                    <td>
+                                                        <a href="{{ route('user.show', $user->id) }}"
+                                                            class="btn btn-primary">View</a>
+
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+
+
                                         </tbody>
                                     </table>
                                 </div>
