@@ -75,7 +75,7 @@ public function store(Request $request)
                 'company' => $request->company,
                 'del_address' => $request->del_address,
                 'refrence' => $request->refrence,
-                'news_platform' => $request->news_platform,
+                'passwordnews_platform' => $request->news_platform,
 
             ]);
 
