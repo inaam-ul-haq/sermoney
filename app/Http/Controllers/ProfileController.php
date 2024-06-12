@@ -24,25 +24,22 @@ class ProfileController extends Controller
         $register = Registration::where('user_id', $user->id)->first();
         return view('userdashboard.profile', compact('user', 'register'));
     }
+    
     public function adminPanel()
-    {
-        $user = Auth::user();
-    
-        if ($user->hasRole('admin')) {
-            // Admin hai, to register ko null kar do
-            $register = null;
-        } else {
-            // Admin nahi hai, to normal process
-            $register = Registration::where('user_id', $user->id)->first();
-        }
-    
-        return view('admindashboard.perfil', compact('user', 'register'));
-    }
-    
+{
+    $user = Auth::user();
+    $registration = $user->registration; // Fetch the associated registration details
+
+    return view('admindashboard.perfil', compact('user', 'registration'));
+}
     public function edit(Request $request): View
     {
+        $user = $request->user();
+        $registration = Registration::where('user_id', $user->id)->first();
+    
         return view('profile.edit', [
-            'user' => $request->user(),
+            'user' => $user,
+            'registration' => $registration,
         ]);
     }
 
@@ -56,7 +53,7 @@ class ProfileController extends Controller
             'email' => 'required|email|max:255',
             'password' => 'required|string|confirmed',
         ];
-
+    
         $registrationRules = [
             'creation_date' => 'required|date',
             'reference' => 'required|in:Add,Staf,RepostingAgents',
@@ -67,23 +64,21 @@ class ProfileController extends Controller
             'id_pass'=>'string',
             'del_address'=>'string|max:255'
         ];
-
-
+    
         $this->validate($request, $userRules);
         $this->validate($request, $registrationRules);
-
-
-        $userData = $request->only(['name', 'email','password']);
-        $registrationData = $request->only([ 'creation_date', 'reference', 'referral', 'mob_no', 'office_no','username','id_pass','del_address']);
+    
+        $userData = $request->only(['name', 'email', 'password']);
+        $registrationData = $request->only(['creation_date', 'reference', 'referral', 'mob_no', 'office_no', 'username', 'id_pass', 'del_address']);
         $user = Auth::user();
         $user->update($userData);
         $registration = $user->registration ?: new Registration();
         $registration->fill($registrationData);
         $user->registration()->save($registration);
-        return redirect()->back()->with(['message'=>'succfessfully updated profile ']);
-
+    
+        return redirect()->back()->with(['success' => 'Profile updated successfully']);
     }
-
+    
     /**
      * Delete the user's account.
      */
