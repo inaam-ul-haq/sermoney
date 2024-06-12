@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PoBoxController;
 use App\Http\Controllers\PoBoxNoController;
-use App\Http\Controllers\PoBoxNoRegController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PoBoxRegController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\PoBoxNoRegController;
 use App\Http\Controllers\RegistrationController;
 
 /*
@@ -63,6 +64,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/adminprofile/edit', [ProfileController::class, 'edit'])->name('adminprofile.edit');
     Route::patch('/adminprofile', [ProfileController::class, 'update'])->name('adminprofile.update');
     Route::delete('/adminprofile', [ProfileController::class, 'destroy'])->name('adminprofile.destroy');
+    Route::get('fractuion',[RegisterController::class,'index'])->name('fractuion');
+Route::get('/admin/userdetails/{id}',[RegisterController::class,'view'])->name('user.show');
 });
 
 
@@ -80,9 +83,7 @@ Route::get('carga2', function () {
     return view('admindashboard/carga2');
 })->name('carga2');
 
-Route::get('fractuion', function () {
-    return view('admindashboard/fractuion');
-})->name('fractuion');
+
 
 Route::get('misl', function () {
     return view('admindashboard/misl');
