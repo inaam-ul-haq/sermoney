@@ -42,7 +42,7 @@ Route::get('/service', function () {
 require __DIR__ . '/auth.php';
 Route::middleware('auth')->group(function () {
 
-    Route::get('useerpanel', function () {
+    Route::get('/useerpanel', function () {
         return view('admindashboard/index');
     })->name('useerpanel');
 
