@@ -6,6 +6,7 @@ use App\Http\Controllers\PoBoxNoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PoBoxRegController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\TrackingCorntoller;
 use App\Http\Controllers\PoBoxNoRegController;
 use App\Http\Controllers\RegistrationController;
 
@@ -59,7 +60,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         return view('dashboard');
 
     });
-
+    Route::get('/admin/tracking',[TrackingCorntoller::class,'index'])->name('admin.tracking');
     Route::get('/adminprofile', [ProfileController::class, 'adminPanel'])->name('adminprofile');
     Route::get('/adminprofile/edit', [ProfileController::class, 'edit'])->name('adminprofile.edit');
     Route::patch('/adminprofile', [ProfileController::class, 'update'])->name('adminprofile.update');
