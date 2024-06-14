@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PoBoxRegController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TrackingCorntoller;
+use App\Http\Controllers\WarehouseController;
 use App\Http\Controllers\PoBoxNoRegController;
 use App\Http\Controllers\RegistrationController;
 
@@ -60,6 +61,18 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         return view('dashboard');
 
     });
+     Route::get('admin/warehouse', function () {
+        return view('admindashboard.warehouse');
+
+    })->name('warehouse');
+
+    // Route::get('misl', function () {
+    //     return view('admindashboard/misl');
+    // })->name('misl');
+    Route::get('/misl', [WarehouseController::class, 'index'])->name('misl');
+
+    Route::post('/warehouses', [WarehouseController::class, 'store'])->name('warehouses.store');
+
     Route::get('/admin/tracking',[TrackingCorntoller::class,'index'])->name('admin.tracking');
     Route::get('/adminprofile', [ProfileController::class, 'adminPanel'])->name('adminprofile');
     Route::get('/adminprofile/edit', [ProfileController::class, 'edit'])->name('adminprofile.edit');
@@ -85,10 +98,6 @@ Route::get('carga2', function () {
 })->name('carga2');
 
 
-
-Route::get('misl', function () {
-    return view('admindashboard/misl');
-})->name('misl');
 
 Route::get('perfil', [ProfileController::class, 'index'])->name('perfil');
 Route::post('/profile/update', [ProfileController::class, 'update'])->name('update');

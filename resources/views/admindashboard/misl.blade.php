@@ -31,86 +31,111 @@
                                 <h1 class="first-heading mt-5">Mis direcciones</h1>
                                 <h5 class="second-h">Resumen de las direcciones de tus casilleros.</h5>
                             </div>
-                        </div>
-                        <div class="col-12 table-contentt p-3 mt-4 rounded">
+                            <div class="row">
 
-                            <div class="row ">
-                                <div class="col-md-6 col-12 table-responsive">
-                                    <table class="table table-bordered">
-                                        <thead class="table-head">
-                                            <th colspan="2">CASILLERO AÉREO MIAMI</th>
-                                        </thead>
-                                        <tbody class="">
-                                            <tr>
-                                                <td class="fw-bold">Name</td>
-                                                <td class="">cristofer guardia BULL01071</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="fw-bold">Address 1</td>
-                                                <td class="">1345 NW 98TH CT UNIT 2</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="fw-bold">Address 2</td>
-                                                <td class="">BULL01071</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="fw-bold">City</td>
-                                                <td class="">DORAL</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="fw-bold">State</td>
-                                                <td class="">FLORIDA</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="fw-bold">Zip code</td>
-                                                <td class="">33172-3049</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="fw-bold">Teléfono</td>
-                                                <td class="">7863602816</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="col-md-6 col-12 table-responsive mt-md-0 mt-4">
-                                    <table class="table table-bordered">
-                                        <thead class="table-head">
-                                            <th colspan="2">CASILLERO AÉREO MIAMI</th>
-                                        </thead>
-                                        <tbody class="">
-                                            <tr>
-                                                <td class="fw-bold">Name</td>
-                                                <td class="">cristofer guardia BULL01071</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="fw-bold">Address 1</td>
-                                                <td class="">1345 NW 98TH CT UNIT 2</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="fw-bold">Address 2</td>
-                                                <td class="">BULL01071</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="fw-bold">City</td>
-                                                <td class="">DORAL</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="fw-bold">State</td>
-                                                <td class="">FLORIDA</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="fw-bold">Zip code</td>
-                                                <td class="">33172-3049</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="fw-bold">Teléfono</td>
-                                                <td class="">7863602816</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <a class="button" href="{{ route('warehouse') }}"
+                                    style="background-color: gray; color: black; padding: 10px 20px; text-decoration: none; border-radius: 5px;width: 14%">
+                                    Warehouse
+                                </a>
                             </div>
                         </div>
+                        {{-- <div class="col-12 table-contentt p-3 mt-4 rounded">
+                            @if ($warehouses)
+                                @foreach ($warehouses as $warehouse)
+                                    <div class="row ">
+                                        <div class="col-md-6 col-12 table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead class="table-head">
+                                                    <th colspan="2">{{ $warehouse->name }}</th>
+                                                </thead>
+                                                <tbody class="">
+                                                    @foreach ($warehouse->addresses as $address)
+                                                        <tr>
+                                                            <td class="fw-bold">Type</td>
+                                                            <td class="">{{ $address->type }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="fw-bold">Country</td>
+                                                            <td class="">{{ $address->country }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="fw-bold">State</td>
+                                                            <td class="">{{ $address->state }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="fw-bold">City</td>
+                                                            <td class="">{{ $address->city }}</td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td class="fw-bold">Postl_Code</td>
+                                                            <td class="">{{ $address->postal_code }}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @else
+                                <p>No warehouses found.</p>
+                            @endif
+                        </div> --}}
+
+                        <div class="col-12 table-contentt p-3 mt-4 rounded">
+    @if ($warehouses->isEmpty())
+        <p>No warehouses found.</p>
+    @else
+        @foreach ($warehouses as $warehouse)
+            <div class="row">
+                <div class="col-md-6 col-6 table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-head">
+                            <tr>
+                                <th colspan="2">{{ $warehouse->name }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if ($warehouse->addresses->isEmpty())
+                                <tr>
+                                    <td colspan="2">No addresses found for this warehouse.</td>
+                                </tr>
+                            @else
+                                <tr>
+                                    <td class="fw-bold">Type</td>
+                                    <td>{{ $warehouse->type }}</td>
+                                </tr>
+                                @foreach ($warehouse->addresses as $address)
+                                    <tr>
+                                        <td class="fw-bold">Country</td>
+                                        <td>{{ $address->country }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">State</td>
+                                        <td>{{ $address->state }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">City</td>
+                                        <td>{{ $address->city }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">Street No</td>
+                                        <td>{{ $address->street_no }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">Postal Code</td>
+                                        <td>{{ $address->postal_code }}</td>
+                                    </tr>
+                                @endforeach
+                            @endif
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        @endforeach
+    @endif
+</div>
+
                     </div>
 
                 </div>
