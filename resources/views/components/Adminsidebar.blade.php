@@ -19,7 +19,7 @@
         </a>
 
     </div>
- 
+
     <ul class="menu-inner py-1 d-flex align-items-center">
         <li class="menu-item mt-2 text-center ">
             <a href="{{ route('fractuion') }}" class="menu-link">
@@ -88,6 +88,20 @@
                 <div data-i18n="Dashboards" class="ms-2">Carga</div>
             </a>
         </li>
+        <li class="menu-item active open">
+    <a href="{{ route('admin.tracking') }}" class="menu-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-car">
+            <path d="M3 12l2-5h14l2 5"></path>
+            <circle cx="7.5" cy="17.5" r="2.5"></circle>
+            <circle cx="16.5" cy="17.5" r="2.5"></circle>
+            <path d="M3 12h18"></path>
+            <path d="M6 12v5H5a1 1 0 0 1-1-1v-4"></path>
+            <path d="M18 12v5h1a1 1 0 0 0 1-1v-4"></path>
+        </svg>
+        <div data-i18n="Dashboards" class="ms-2">Tracking</div>
+    </a>
+</li>
+
 
         <li class="line menu-item my-2"></li>
         <li class="menu-item">

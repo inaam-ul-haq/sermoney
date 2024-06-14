@@ -87,7 +87,7 @@
    @role('user')
    <x-Usersidebar />
    @endrole
-   
+
     <main>
         @yield('content')
     </main>

@@ -60,6 +60,8 @@ public function store(Request $request)
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ]);
+            $user->assignRole('user');
+
 
             Registration::create([
                 'user_id' => $user->id,
@@ -73,9 +75,10 @@ public function store(Request $request)
                 'company' => $request->company,
                 'del_address' => $request->del_address,
                 'refrence' => $request->refrence,
-                'news_platform' => $request->news_platform,
+                'passwordnews_platform' => $request->news_platform,
 
             ]);
+
 
             // Redirect to the index route with a success message
             return redirect()->route('login')->with('success', 'Registration successful!');
@@ -106,6 +109,7 @@ public function store(Request $request)
         ]);
 
         $user = auth()->user();
+
         $user->update($request->all());
 
         return redirect()->route('profile.edit')->with('success', 'Profile updated successfully');

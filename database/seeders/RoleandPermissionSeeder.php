@@ -26,7 +26,8 @@ class RoleandPermissionSeeder extends Seeder
         }
 
         // Define users with roles
-        $usersData = [
+        $usersData =
+        [
             [
                 'name' => 'Admin User',
                 'email' => 'admin@example.com',
@@ -59,21 +60,21 @@ class RoleandPermissionSeeder extends Seeder
                     'user_id' => $user->id,
                     'pobox' => $userData['role'] == 'admin' ? null : 'POBox123', // or any other default value
                     'username' => $user->name,
-                    'mob_no' => '1234567890', 
-                    'office_no' => '0987654321', 
-                    'id_pass' => 'IDPass123', 
-                    'country' => 'CountryName', 
-                    'province' => 'ProvinceName', 
-                    'city' => 'CityName', 
-                    'company' => 'CompanyName', 
-                    'del_address' => 'DeliveryAddress', 
-                    'refrence' => 'Add', 
-                    'news_platform' => 'Google', 
+                    'mob_no' => '1234567890',
+                    'office_no' => '0987654321',
+                    'id_pass' => 'IDPass123',
+                    'country' => 'CountryName',
+                    'province' => 'ProvinceName',
+                    'city' => 'CityName',
+                    'company' => 'CompanyName',
+                    'del_address' => 'DeliveryAddress',
+                    'refrence' => 'Add',
+                    'news_platform' => 'Google',
                 ]);
             } else {
                 throw new \Exception("Role key is missing for user: " . $userData['email']);
             }
         }
-        
+
     }
 }

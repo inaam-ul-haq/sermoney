@@ -33,7 +33,7 @@ public function store(Request $request)
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ]);
-
+            $user->assignRole('user');
 
             Registration::create([
                 'user_id' => $user->id,
