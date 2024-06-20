@@ -74,7 +74,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/warehouses', [WarehouseController::class, 'store'])->name('warehouses.store');
 
     Route::get('/admin/tracking',[TrackingCorntoller::class,'index'])->name('admin.tracking');
-    Route::get('/fetch-tracking-data', [TrackingCorntoller::class, 'fetchData']);
 
     Route::get('/adminprofile', [ProfileController::class, 'adminPanel'])->name('adminprofile');
     Route::get('/adminprofile/edit', [ProfileController::class, 'edit'])->name('adminprofile.edit');

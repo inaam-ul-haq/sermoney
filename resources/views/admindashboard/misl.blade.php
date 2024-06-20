@@ -81,102 +81,108 @@
                                 <p>No warehouses found.</p>
                             @endif
                         </div> --}}
+                        <div class="row my-2">
+                            <div class="col-lg-9  table-contentt p-3 mt-4 rounded">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-6 p-3 " style="position: relative">
 
-                        <div class="col-12 table-contentt p-3 mt-4 rounded">
-    @if ($warehouses->isEmpty())
-        <p>No warehouses found.</p>
-    @else
-        @foreach ($warehouses as $warehouse)
-            <div class="row">
-                <div class="col-md-6 col-6 table-responsive">
-                    <table class="table table-bordered">
-                        <thead class="table-head">
-                            <tr>
-                                <th colspan="2">{{ $warehouse->name }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if ($warehouse->addresses->isEmpty())
-                                <tr>
-                                    <td colspan="2">No addresses found for this warehouse.</td>
-                                </tr>
-                            @else
-                                <tr>
-                                    <td class="fw-bold">Type</td>
-                                    <td>{{ $warehouse->type }}</td>
-                                </tr>
-                                @foreach ($warehouse->addresses as $address)
-                                    <tr>
-                                        <td class="fw-bold">Country</td>
-                                        <td>{{ $address->country }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-bold">State</td>
-                                        <td>{{ $address->state }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-bold">City</td>
-                                        <td>{{ $address->city }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-bold">Street No</td>
-                                        <td>{{ $address->street_no }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-bold">Postal Code</td>
-                                        <td>{{ $address->postal_code }}</td>
-                                    </tr>
-                                @endforeach
-                            @endif
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        @endforeach
-    @endif
-</div>
-
-                    </div>
-
-                </div>
-                <!-- / Content -->
-
-
+                                        @if ($warehouses->isEmpty())
+                                            <p>No warehouses found.</p>
+                                        @else
+                                            @foreach ($warehouses as $warehouse)
+                                                <div class="row">
+                                                    <div class="col-md-6 col-6 table-responsive">
+                                                        <table class="table table-bordered">
+                                                            <thead class="table-head">
+                                                                <tr>
+                                                                    <th colspan="2">{{ $warehouse->name }}</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @if ($warehouse->addresses->isEmpty())
+                                                                    <tr>
+                                                                        <td colspan="2">No addresses found for this
+                                                                            warehouse.</td>
+                                                                    </tr>
+                                                                @else
+                                                                    <tr>
+                                                                        <td class="fw-bold">Type</td>
+                                                                        <td>{{ $warehouse->type }}</td>
+                                                                    </tr>
+                                                                    @foreach ($warehouse->addresses as $address)
+                                                                        <tr>
+                                                                            <td class="fw-bold">Country</td>
+                                                                            <td>{{ $address->country }}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="fw-bold">State</td>
+                                                                            <td>{{ $address->state }}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="fw-bold">City</td>
+                                                                            <td>{{ $address->city }}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="fw-bold">Street No</td>
+                                                                            <td>{{ $address->street }}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="fw-bold">Postal Code</td>
+                                                                            <td>{{ $address->postal_code }}</td>
+                                                                        </tr>
+                                                                    @endforeach
+                                                                @endif
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
 
 
-                <!-- ========== Start footer ========== -->
-                <div class="col-12 my-5">
-                    <div class="d-flex justify-content-center align-items-center flex-column footer-logo">
-                        <div class=" d-flex justify-content-center align-items-start flex-column">
-                            <span>Powered By</span>
-                            <div class="d-flex justify-content-center align-items-center">
-                                <span class="footer-img-span"><img src="../assets/img/images/Group 1.png"
-                                        alt=""></span>
-                                <div class="ms-2">
-                                    <h4 class="mb-0">aben</h4>
-                                    <span class="pb-0">Technology Developments</span>
+                            </div>
+
+                        </div>
+                        <!-- / Content -->
+
+
+
+
+                        <!-- ========== Start footer ========== -->
+                        <div class="col-12 my-5">
+                            <div class="d-flex justify-content-center align-items-center flex-column footer-logo">
+                                <div class=" d-flex justify-content-center align-items-start flex-column">
+                                    <span>Powered By</span>
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <span class="footer-img-span"><img src="../assets/img/images/Group 1.png"
+                                                alt=""></span>
+                                        <div class="ms-2">
+                                            <h4 class="mb-0">aben</h4>
+                                            <span class="pb-0">Technology Developments</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- ========== End footer ========== -->
+
+
+
+
                     </div>
+                    <!-- Content wrapper -->
                 </div>
-                <!-- ========== End footer ========== -->
-
-
-
-
+                <!-- / Layout page -->
             </div>
-            <!-- Content wrapper -->
+
+
+
+            <!-- Overlay -->
+            <div class="layout-overlay layout-menu-toggle"></div>
+
+
         </div>
-        <!-- / Layout page -->
-    </div>
-
-
-
-    <!-- Overlay -->
-    <div class="layout-overlay layout-menu-toggle"></div>
-
-
-    </div>
-    <!-- / Layout wrapper -->
-@endsection
+        <!-- / Layout wrapper -->
+    @endsection

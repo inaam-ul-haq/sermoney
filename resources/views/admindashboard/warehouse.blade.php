@@ -60,10 +60,10 @@
                     <label for="inputCity" class="form-label">City</label>
                     <select id="inputCity" class="form-select" name="city">
                             <option value="" selected>Choose...</option>
-                            <option value="ny">New York</option>
-                            <option value="la">Los Angeles</option>
-                            <option value="ldn">London</option>
-                            <option value="syd">Sydney</option>
+                            <option value="New York">New York</option>
+                            <option value="Los Angeles">Los Angeles</option>
+                            <option value="London">London</option>
+                            <option value="Sydney">Sydney</option>
                             <!-- Add more cities as needed -->
                         </select>
                 </div>
@@ -71,10 +71,10 @@
                     <label for="inputState" class="form-label">State</label>
                    <select id="inputState" class="form-select" name="state">
                             <option value="" selected>Choose...</option>
-                            <option value="ny">New York</option>
-                            <option value="ca">California</option>
-                            <option value="tx">Texas</option>
-                            <option value="nsw">New South Wales</option>
+                            <option value="New York">New York</option>
+                            <option value="California">California</option>
+                            <option value="Texas">Texas</option>
+                            <option value="New South Wales">New South Wales</option>
                             <!-- Add more states as needed -->
                         </select>
                 </div>
