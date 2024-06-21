@@ -61,10 +61,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         return view('dashboard');
 
     });
-     Route::get('admin/warehouse', function () {
-        return view('admindashboard.warehouse');
-
-    })->name('warehouse');
+     Route::get('admin/warehouse',[WarehouseController::class,'show'])->name('warehouse');
 
     // Route::get('misl', function () {
     //     return view('admindashboard/misl');
@@ -72,9 +69,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/misl', [WarehouseController::class, 'index'])->name('misl');
 
     Route::post('/warehouses', [WarehouseController::class, 'store'])->name('warehouses.store');
-
+    Route::get('/get-states/{country_id}', [WarehouseController::class, 'getStates']);
+    Route::get('/get-cities/{state_id}', [WarehouseController::class, 'getCities']);
     Route::get('/admin/tracking',[TrackingCorntoller::class,'index'])->name('admin.tracking');
-    Route::get('/fetch-tracking-data', [TrackingCorntoller::class, 'fetchData']);
 
     Route::get('/adminprofile', [ProfileController::class, 'adminPanel'])->name('adminprofile');
     Route::get('/adminprofile/edit', [ProfileController::class, 'edit'])->name('adminprofile.edit');
@@ -94,7 +91,7 @@ Route::get('/po-box', [PoBoxNoController::class, 'createForm']);
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
+Route::get('/addresses',[WarehouseController::class,'display'])->name('addresses');
 Route::get('carga2', function () {
     return view('admindashboard/carga2');
 })->name('carga2');
