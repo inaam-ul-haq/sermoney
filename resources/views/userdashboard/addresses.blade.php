@@ -31,13 +31,7 @@
                                 <h1 class="first-heading mt-5">Mis direcciones</h1>
                                 <h5 class="second-h">Resumen de las direcciones de tus casilleros.</h5>
                             </div>
-                            <div class="row">
 
-                                <a class="button" href="{{ route('warehouse') }}"
-                                    style="background-color: gray; color: black; padding: 10px 20px; text-decoration: none; border-radius: 5px;width: 14%">
-                                    Warehouse
-                                </a>
-                            </div>
                         </div>
 
                         <div class="row my-2">
