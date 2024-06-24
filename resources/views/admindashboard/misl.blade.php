@@ -41,36 +41,36 @@
                         </div>
 
                         <div class="row my-2">
-                            <div class="col-lg-9  table-contentt p-3 mt-4 rounded">
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-6 p-3 " style="position: relative">
-
-                                        @if ($warehouses->isEmpty())
-                                            <p>No warehouses found.</p>
-                                        @else
-                                            @foreach ($warehouses as $warehouse)
-                                                <div class="row">
-                                                    <div class="col-md-6 col-6 table-responsive">
-                                                        <table class="table table-bordered">
-                                                            <thead class="table-head">
-                                                                <tr>
-                                                                    <th colspan="2">{{ $warehouse->name }}
-                                                                         <button>Update</button>
-                                                                           <button>DElate</button>
-                                                                    </th>
-                                                                </tr>
-                                                                <tr>
-
-
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                @if ($warehouse->addresses->isEmpty())
-                                                                    <tr>
-                                                                        <td colspan="2">No addresses found for this
-                                                                            warehouse.</td>
-                                                                    </tr>
-                                                                @else
+                            <div class="col-lg-9 table-content p-3 mt-4 rounded">
+                                @if ($warehouses->isEmpty())
+                                    <p>No warehouses found.</p>
+                                @else
+                                    <div class="row">
+                                        @foreach ($warehouses as $warehouse)
+                                            <div class="col-md-6 col-12 mb-3">
+                                                <div class="card">
+                                                    <div class="card-header d-flex justify-content-between">
+                                                        <div class="">
+                                                            <h5>{{ $warehouse->name }}</h5>
+                                                        </div>
+                                                        <div class="">
+                                                            <a href="{{ route('warehouses.edit', $warehouse->id) }}"
+                                                                class="btn btn-sm btn-success">Update</a>
+                                                            <form action="{{ route('warehouses.destroy', $warehouse->id) }}"
+                                                                method="POST" style="display:inline;">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit"
+                                                                    class="btn btn-sm btn-danger">Delete</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        @if ($warehouse->addresses->isEmpty())
+                                                            <p>No addresses found for this warehouse.</p>
+                                                        @else
+                                                            <table class="table table-bordered">
+                                                                <tbody>
                                                                     <tr>
                                                                         <td class="fw-bold">Type</td>
                                                                         <td>{{ $warehouse->type }}</td>
@@ -97,58 +97,61 @@
                                                                             <td>{{ $address->postal_code }}</td>
                                                                         </tr>
                                                                     @endforeach
-                                                                @endif
-                                                            </tbody>
-                                                        </table>
+                                                                </tbody>
+                                                            </table>
+                                                        @endif
                                                     </div>
                                                 </div>
-                                            @endforeach
-                                        @endif
+                                            </div>
+                                        @endforeach
                                     </div>
-                                </div>
-
-
-                            </div>
-
-                        </div>
-                        <!-- / Content -->
-
-
-
-
-                        <!-- ========== Start footer ========== -->
-                        <div class="col-12 my-5">
-                            <div class="d-flex justify-content-center align-items-center flex-column footer-logo">
-                                <div class=" d-flex justify-content-center align-items-start flex-column">
-                                    <span>Powered By</span>
-                                    <div class="d-flex justify-content-center align-items-center">
-                                        <span class="footer-img-span"><img src="../assets/img/images/Group 1.png"
-                                                alt=""></span>
-                                        <div class="ms-2">
-                                            <h4 class="mb-0">aben</h4>
-                                            <span class="pb-0">Technology Developments</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endif
                             </div>
                         </div>
-                        <!-- ========== End footer ========== -->
-
 
 
 
                     </div>
-                    <!-- Content wrapper -->
+
                 </div>
-                <!-- / Layout page -->
+                <!-- / Content -->
+
+
+
+
+                <!-- ========== Start footer ========== -->
+                <div class="col-12 my-5">
+                    <div class="d-flex justify-content-center align-items-center flex-column footer-logo">
+                        <div class=" d-flex justify-content-center align-items-start flex-column">
+                            <span>Powered By</span>
+                            <div class="d-flex justify-content-center align-items-center">
+                                <span class="footer-img-span"><img src="../assets/img/images/Group 1.png"
+                                        alt=""></span>
+                                <div class="ms-2">
+                                    <h4 class="mb-0">aben</h4>
+                                    <span class="pb-0">Technology Developments</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ========== End footer ========== -->
+
+
+
+
             </div>
-
-
-
-            <!-- Overlay -->
-            <div class="layout-overlay layout-menu-toggle"></div>
-
-
+            <!-- Content wrapper -->
         </div>
-        <!-- / Layout wrapper -->
-    @endsection
+        <!-- / Layout page -->
+    </div>
+
+
+
+    <!-- Overlay -->
+    <div class="layout-overlay layout-menu-toggle"></div>
+
+
+    </div>
+    <!-- / Layout wrapper -->
+@endsection
