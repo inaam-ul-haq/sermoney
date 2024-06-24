@@ -32,19 +32,33 @@
             <div data-i18n="Dashboards" class="ms-2">Mi perfil</div>
         </a>
     </li>
-   <li class="menu-item">
-        <a href="{{ route('addresses') }}" class="menu-link">
-            <svg width="24" height="22" viewBox="0 0 22 12" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M11 6.6875C12.4942 6.6875 13.8142 7.045 14.8867 7.5125C15.8767 7.9525 16.5 8.9425 16.5 10.015V11.5H5.5V10.0242C5.5 8.9425 6.12333 7.9525 7.11333 7.52167C8.18583 7.045 9.50583 6.6875 11 6.6875ZM3.66667 6.91667C4.675 6.91667 5.5 6.09167 5.5 5.08333C5.5 4.075 4.675 3.25 3.66667 3.25C2.65833 3.25 1.83333 4.075 1.83333 5.08333C1.83333 6.09167 2.65833 6.91667 3.66667 6.91667ZM4.7025 7.925C4.36333 7.87 4.02417 7.83333 3.66667 7.83333C2.75917 7.83333 1.8975 8.02583 1.11833 8.365C0.786236 8.50695 0.50318 8.74337 0.30435 9.04488C0.10552 9.34638 -0.000315046 9.69967 7.04453e-07 10.0608V11.5H4.125V10.0242C4.125 9.26333 4.33583 8.54833 4.7025 7.925ZM18.3333 6.91667C19.3417 6.91667 20.1667 6.09167 20.1667 5.08333C20.1667 4.075 19.3417 3.25 18.3333 3.25C17.325 3.25 16.5 4.075 16.5 5.08333C16.5 6.09167 17.325 6.91667 18.3333 6.91667ZM22 10.0608C22 9.31833 21.56 8.65833 20.8817 8.365C20.0779 8.01427 19.2103 7.83327 18.3333 7.83333C17.9758 7.83333 17.6367 7.87 17.2975 7.925C17.6642 8.54833 17.875 9.26333 17.875 10.0242V11.5H22V10.0608ZM11 0.5C12.5217 0.5 13.75 1.72833 13.75 3.25C13.75 4.77167 12.5217 6 11 6C9.47833 6 8.25 4.77167 8.25 3.25C8.25 1.72833 9.47833 0.5 11 0.5Z"
-                    fill="white" fill-opacity="0.7" />
-            </svg>
 
-            <div data-i18n="Dashboards" class="ms-2">Address</div>
-        </a>
+    <li class="menu-item">
+    <a href="{{ route('addresses') }}" class="menu-link">
+        <svg width="24" height="22" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3L2 12H5V21H10V14H14V21H19V12H22L12 3Z" fill="white" fill-opacity="0.7"/>
+        </svg>
+        <div data-i18n="Dashboards" class="ms-2">Address</div>
+    </a>
+</li>
+
+
+      <li class="menu-item">
+
+           <a href="{{ route('user.tracking') }}" class="menu-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-car">
+            <path d="M3 12l2-5h14l2 5"></path>
+            <circle cx="7.5" cy="17.5" r="2.5"></circle>
+            <circle cx="16.5" cy="17.5" r="2.5"></circle>
+            <path d="M3 12h18"></path>
+            <path d="M6 12v5H5a1 1 0 0 1-1-1v-4"></path>
+            <path d="M18 12v5h1a1 1 0 0 0 1-1v-4"></path>
+        </svg>
+        <div data-i18n="Dashboards" class="ms-2">Tracking</div>
+    </a>
+
     </li>
-
 
     <li class="menu-item button-list mt-2">
 <form method="POST" action="{{ route('logout') }}">
