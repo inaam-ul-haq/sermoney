@@ -26,7 +26,7 @@
 </head>
 <body>
 
-<button class="button" onclick="openPopup()">Abrir Seguimiento de Fast Cargo</button>
+<button class="button" onclick="openPopup()"> Bodega Miami</button>
 
 <script>
   function openPopup() {

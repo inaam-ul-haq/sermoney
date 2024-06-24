@@ -71,14 +71,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/warehouses', [WarehouseController::class, 'store'])->name('warehouses.store');
     Route::get('/get-states/{country_id}', [WarehouseController::class, 'getStates']);
     Route::get('/get-cities/{state_id}', [WarehouseController::class, 'getCities']);
-    Route::get('/admin/tracking',[TrackingCorntoller::class,'index'])->name('admin.tracking');
 
     Route::get('/adminprofile', [ProfileController::class, 'adminPanel'])->name('adminprofile');
     Route::get('/adminprofile/edit', [ProfileController::class, 'edit'])->name('adminprofile.edit');
     Route::patch('/adminprofile', [ProfileController::class, 'update'])->name('adminprofile.update');
     Route::delete('/adminprofile', [ProfileController::class, 'destroy'])->name('adminprofile.destroy');
     Route::get('fractuion',[RegisterController::class,'index'])->name('fractuion');
-Route::get('/admin/userdetails/{id}',[RegisterController::class,'view'])->name('user.show');
+Route::get('/users/{id}',[RegisterController::class,'view'])->name('show');
+    Route::put('/users/{id}/status', [RegisterController::class, 'updateStatus']);
+
+
 });
 
 
@@ -89,9 +91,13 @@ Route::post('/register', [PoBoxNoRegController::class, 'store'])->name('register
 Route::get('/po-box', [PoBoxNoController::class, 'createForm']);
 
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 Route::get('/addresses',[WarehouseController::class,'display'])->name('addresses');
+
+Route::get('/usertracking/tracking', [TrackingCorntoller::class, 'index'])->name('user.tracking');
+
+
 Route::get('carga2', function () {
     return view('admindashboard/carga2');
 })->name('carga2');

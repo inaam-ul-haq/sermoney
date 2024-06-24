@@ -23,6 +23,22 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
+    // public function store(LoginRequest $request): RedirectResponse
+    // {
+    //     $request->authenticate();
+
+    //     $request->session()->regenerate();
+
+    //     $user = Auth::user();
+
+    //     if ($user->hasRole('admin')) {
+    //         return redirect()->route('index');
+    //     }
+
+    //     return redirect()->route('useerpanel')->with('status', 'User logged in');
+    // }
+
+
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
@@ -35,9 +51,15 @@ class AuthenticatedSessionController extends Controller
             return redirect()->route('index');
         }
 
+        if ($user->status == 'pending' || $user->status == 'rejected') {
+            Auth::logout();
+            return redirect()->route('login')->withErrors([
+                'status' => 'Your account status is ' . $user->status . '. You cannot log in at this time.',
+            ]);
+        }
+
         return redirect()->route('useerpanel')->with('status', 'User logged in');
     }
-
     /**
      * Destroy an authenticated session.
      */

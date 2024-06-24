@@ -54,7 +54,14 @@
                                                         <table class="table table-bordered">
                                                             <thead class="table-head">
                                                                 <tr>
-                                                                    <th colspan="2">{{ $warehouse->name }}</th>
+                                                                    <th colspan="2">{{ $warehouse->name }}
+                                                                         <button>Update</button>
+                                                                           <button>DElate</button>
+                                                                    </th>
+                                                                </tr>
+                                                                <tr>
+
+
                                                                 </tr>
                                                             </thead>
                                                             <tbody>

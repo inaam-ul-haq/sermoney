@@ -12,6 +12,7 @@
 
     <title>En bodega</title>
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <meta name="description"
         content="Most Powerful &amp; Comprehensive Bootstrap 5 Admin Dashboard built for developers!" />
@@ -53,6 +54,7 @@
 
     <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <!-- Core CSS -->
     <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css" />

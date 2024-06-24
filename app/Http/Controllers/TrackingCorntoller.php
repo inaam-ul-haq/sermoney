@@ -10,7 +10,7 @@ class TrackingCorntoller extends Controller
     public function index()
 
 {
-    return view('admindashboard.Tracking');
+    return view('userdashboard.Tracking');
 }
     public function fetchData()
     {
