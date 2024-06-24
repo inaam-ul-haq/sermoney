@@ -77,7 +77,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::patch('/adminprofile', [ProfileController::class, 'update'])->name('adminprofile.update');
     Route::delete('/adminprofile', [ProfileController::class, 'destroy'])->name('adminprofile.destroy');
     Route::get('fractuion',[RegisterController::class,'index'])->name('fractuion');
-Route::get('/admin/userdetails/{id}',[RegisterController::class,'view'])->name('user.show');
+Route::get('/users/{id}',[RegisterController::class,'view'])->name('show');
+    Route::put('/users/{id}/status', [RegisterController::class, 'updateStatus']);
+
+
 });
 
 
