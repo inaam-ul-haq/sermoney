@@ -46,6 +46,7 @@
                                     <p>No warehouses found.</p>
                                 @else
                                     <div class="row">
+                                        <!-- Loop through warehouses and add data-id attribute to the Update button -->
                                         @foreach ($warehouses as $warehouse)
                                             <div class="col-md-6 col-12 mb-3">
                                                 <div class="card">
@@ -54,8 +55,14 @@
                                                             <h5>{{ $warehouse->name }}</h5>
                                                         </div>
                                                         <div class="">
-                                                            <a href="{{ route('warehouses.edit', $warehouse->id) }}"
-                                                                class="btn btn-sm btn-success">Update</a>
+                                                            <!-- Button trigger modal -->
+                                                            <button type="button" class="btn btn-sm btn-success"
+                                                                data-id="{{ $warehouse->id }}" data-bs-toggle="modal"
+                                                                data-bs-target="#editWarehouseModal">
+                                                                Update
+                                                            </button>
+
+                                                            <!-- Delete button and form -->
                                                             <form action="{{ route('warehouses.destroy', $warehouse->id) }}"
                                                                 method="POST" style="display:inline;">
                                                                 @csrf
@@ -104,6 +111,88 @@
                                                 </div>
                                             </div>
                                         @endforeach
+                                        <!-- Modal for editing warehouse -->
+                                        <div class="modal fade" id="editWarehouseModal" tabindex="-1"
+                                            aria-labelledby="editWarehouseModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h2 class="modal-title" id="editWarehouseModalLabel">Edit Warehouse
+                                                        </h2>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="container edit_cont p-3">
+                                                            {{-- <h2>Edit Warehouse</h2> --}}
+                                                            <form id="editWarehouseForm" action="" method="POST">
+                                                                @csrf
+                                                                @method('PUT')
+
+                                                                <div class="form-group">
+                                                                    <label for="warehouse">Warehouse Name</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="warehouse" name="warehouse" required>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="type">Type</label>
+                                                                    <select class="form-control" id="type"
+                                                                        name="type" required>
+                                                                        <option value="air">Air</option>
+                                                                        <option value="martial">Martial</option>
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="street_no">Street No</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="street_no" name="street_no" required>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="country">Country</label>
+                                                                    <select class="form-control" id="country"
+                                                                        name="country" required>
+                                                                        <option value="">Choose Country...</option>
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="state">State</label>
+                                                                    <select class="form-control" id="state"
+                                                                        name="state" required>
+                                                                        <option value="">Choose State...</option>
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="city">City</label>
+                                                                    <select class="form-control" id="city"
+                                                                        name="city">
+                                                                        <option value="">Choose City...</option>
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="postal_code">Postal Code</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="postal_code" name="postal_code" required>
+                                                                </div>
+
+                                                                <button type="submit"
+                                                                    class="btn btn-success">Update</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 @endif
                             </div>
@@ -136,10 +225,6 @@
                     </div>
                 </div>
                 <!-- ========== End footer ========== -->
-
-
-
-
             </div>
             <!-- Content wrapper -->
         </div>
@@ -154,4 +239,161 @@
 
     </div>
     <!-- / Layout wrapper -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {{-- <script>
+        $(document).ready(function() {
+            $('.btn-success').on('click', function() {
+                var warehouseId = $(this).data('id');
+                var url = '{{ route('warehouses.getWarehouse', ':id') }}';
+                url = url.replace(':id', warehouseId);
+
+                $.ajax({
+                    url: url,
+                    method: 'GET',
+                    success: function(data) {
+                        $('#editWarehouseForm').attr('action',
+                            '{{ route('warehouses.update', ':id') }}'.replace(':id',
+                                warehouseId));
+                        $('#warehouse').val(data.warehouse.name);
+                        $('#type').val(data.warehouse.type);
+                        $('#street_no').val(data.address.street);
+
+                        // Populate the country select
+                        var countryOptions = '<option value="">Choose Country...</option>';
+                        $.each(data.countries, function(index, country) {
+                            countryOptions += '<option value="' + country.id + '"' + (
+                                country.id == data.address.country ?
+                                ' selected' : '') + '>' + country.name + '</option>';
+                        });
+                        $('#country').html(countryOptions);
+
+                        // Populate the state select
+                        var stateOptions = '<option value="">Choose State...</option>';
+                        $.each(data.states, function(index, state) {
+                            stateOptions += '<option value="' + state.id + '"' + (state
+                                    .id == data.address.state ? ' selected' : '') +
+                                '>' + state.name + '</option>';
+                        });
+                        $('#state').html(stateOptions);
+
+                        // Populate the city select
+                        var cityOptions = '<option value="">Choose City...</option>';
+                        $.each(data.cities, function(index, city) {
+                            cityOptions += '<option value="' + city.id + '"' + (city
+                                    .id == data.address.city ? ' selected' : '') +
+                                '>' + city.name + '</option>';
+                        });
+                        $('#city').html(cityOptions);
+
+                        $('#postal_code').val(data.address.postal_code);
+
+                        $('#editWarehouseModal').modal('show');
+                    }
+                });
+            });
+        });
+    </script> --}}
+    <script>
+        $(document).ready(function() {
+            // Function to load states based on the selected country
+            function loadStates(countryId) {
+                var url = '{{ route('getStatesByCountry', ':id') }}';
+                url = url.replace(':id', countryId);
+
+                $.ajax({
+                    url: url,
+                    method: 'GET',
+                    success: function(data) {
+                        var stateOptions = '<option value="">Choose State...</option>';
+                        $.each(data.states, function(index, state) {
+                            stateOptions += '<option value="' + state.id + '">' + state.name +
+                                '</option>';
+                        });
+                        $('#state').html(stateOptions);
+                        $('#city').html(
+                            '<option value="">Choose City...</option>'); // Clear city dropdown
+                    }
+                });
+            }
+
+            // Function to load cities based on the selected state
+            function loadCities(stateId) {
+                var url = '{{ route('getCitiesByState', ':id') }}';
+                url = url.replace(':id', stateId);
+
+                $.ajax({
+                    url: url,
+                    method: 'GET',
+                    success: function(data) {
+                        var cityOptions = '<option value="">Choose City...</option>';
+                        $.each(data.cities, function(index, city) {
+                            cityOptions += '<option value="' + city.id + '">' + city.name +
+                                '</option>';
+                        });
+                        $('#city').html(cityOptions);
+                    }
+                });
+            }
+
+            $('.btn-success').on('click', function() {
+                var warehouseId = $(this).data('id');
+                var url = '{{ route('warehouses.getWarehouse', ':id') }}';
+                url = url.replace(':id', warehouseId);
+
+                $.ajax({
+                    url: url,
+                    method: 'GET',
+                    success: function(data) {
+                        $('#editWarehouseForm').attr('action',
+                            '{{ route('warehouses.update', ':id') }}'.replace(':id',
+                                warehouseId));
+                        $('#warehouse').val(data.warehouse.name);
+                        $('#type').val(data.warehouse.type);
+                        $('#street_no').val(data.address.street);
+
+                        // Populate the country select
+                        var countryOptions = '<option value="">Choose Country...</option>';
+                        $.each(data.countries, function(index, country) {
+                            countryOptions += '<option value="' + country.id + '"' + (
+                                country.id == data.address.country ? ' selected' :
+                                '') + '>' + country.name + '</option>';
+                        });
+                        $('#country').html(countryOptions);
+
+                        // Populate the state select
+                        loadStates(data.address.country);
+
+                        // Populate the city select
+                        loadCities(data.address.state);
+
+                        $('#postal_code').val(data.address.postal_code);
+
+                        $('#editWarehouseModal').modal('show');
+                    }
+                });
+            });
+
+            // Add change event listener for country select
+            $('#country').on('change', function() {
+                var countryId = $(this).val();
+                if (countryId) {
+                    loadStates(countryId);
+                } else {
+                    $('#state').html('<option value="">Choose State...</option>');
+                    $('#city').html('<option value="">Choose City...</option>');
+                }
+            });
+
+            // Add change event listener for state select
+            $('#state').on('change', function() {
+                var stateId = $(this).val();
+                if (stateId) {
+                    loadCities(stateId);
+                } else {
+                    $('#city').html('<option value="">Choose City...</option>');
+                }
+            });
+        });
+    </script>
+
 @endsection

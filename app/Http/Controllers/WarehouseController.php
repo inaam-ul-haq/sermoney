@@ -14,8 +14,10 @@ class WarehouseController extends Controller
     public function index()
     {
         $warehouses = Warehouse::with('addresses')->get();
+        $countries = Country::all();
 
-        return view('admindashboard/misl', compact('warehouses'));
+
+        return view('admindashboard/misl', compact('warehouses', 'countries'));
     }
 
     public function show()
@@ -39,13 +41,11 @@ class WarehouseController extends Controller
         $state = State::find($validated['state']);
         $city = City::find($validated['city']);
 
-        // Save to warehouses table
         $warehouse = Warehouse::create([
             'name' => $validated['warehouse'],
             'type' => $validated['type'],
         ]);
 
-        // Save to addresses table
         Address::create([
             'warehouse_id' => $warehouse->id,
             'street' => $validated['street_no'],
@@ -75,23 +75,21 @@ class WarehouseController extends Controller
     }
 
 
-
-
-
     public function edit($id)
     {
-        $warehouse = Warehouse::with('addresses')->findOrFail($id);
-        $address = $warehouse->addresses->first(); // Accessing the first address
-
-        if (!$address) {
-            return redirect()->route('warehouses.index')->with('error', 'Address not found.');
-        }
-
+        $warehouse = Warehouse::with('addresses')->find($id);
+        $address = Address::where('warehouse_id', $id)->first();
+        $states = State::where('country_id', $address->country)->get();
+        $cities = City::where('state_id', $address->state)->get();
         $countries = Country::all();
-        $states = State::where('country_id', $address->country_id)->get(); // Assuming `country_id` is stored in the addresses table
-        $cities = City::where('state_id', $address->state_id)->get(); // Assuming `state_id` is stored in the addresses table
 
-        return view('admindashboard.edit_warehouse', compact('warehouse', 'countries', 'states', 'cities', 'address'));
+        return response()->json([
+            'warehouse' => $warehouse,
+            'address' => $address,
+            'states' => $states,
+            'cities' => $cities,
+            'countries' => $countries,
+        ]);
     }
 
 
@@ -106,6 +104,9 @@ class WarehouseController extends Controller
             'state' => 'required|string|max:255',
             'postal_code' => 'required|string|max:20',
         ]);
+        $country = Country::find($validated['country']);
+        $state = State::find($validated['state']);
+        $city = City::find($validated['city']);
 
         $warehouse = Warehouse::find($id);
         $warehouse->update([
@@ -116,13 +117,13 @@ class WarehouseController extends Controller
         $address = $warehouse->addresses->first();
         $address->update([
             'street' => $validated['street_no'],
-            'city' => $validated['city'],
-            'state' => $validated['state'],
-            'country' => $validated['country'],
+            'city' => $city->name,
+            'state' => $state->name,
+            'country' => $country->name,
             'postal_code' => $validated['postal_code'],
         ]);
 
-        return redirect()->route('warehouses.index')->with('success', 'Warehouse and Address updated successfully');
+        return redirect()->route('misl')->with('success', 'Warehouse and Address updated successfully');
     }
     public function destroy($id)
     {
@@ -131,5 +132,18 @@ class WarehouseController extends Controller
         $warehouse->delete();
 
         return redirect()->route('misl')->with('success', 'Warehouse deleted successfully');
+    }
+
+    public function getStatesByCountry($countryId)
+    {
+        $states = State::where('country_id', $countryId)->get();
+        return response()->json(['states' => $states]);
+    }
+
+    // Method to get cities by state ID
+    public function getCitiesByState($stateId)
+    {
+        $cities = City::where('state_id', $stateId)->get();
+        return response()->json(['cities' => $cities]);
     }
 }
