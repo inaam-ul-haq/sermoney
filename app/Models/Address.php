@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Address extends Model
 {
     use HasFactory;
-    public $table='addresses';
-    protected $fillable=['warehouse_id','street','city','state','country','postal_code'];
+    public $table = 'addresses';
+    protected $fillable = ['warehouse_id', 'street', 'city', 'state', 'country', 'postal_code'];
 
     public function warehouse()
     {
@@ -19,5 +19,10 @@ class Address extends Model
     public function deliveries()
     {
         return $this->hasMany(Delivery::class);
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country');
     }
 }

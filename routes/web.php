@@ -106,6 +106,9 @@ Route::post('/profile/update', [ProfileController::class, 'update'])->name('upda
 Route::get('/registrations/create', [RegistrationController::class, 'create'])->name('registrations.create');
 Route::post('/registrations', [RegistrationController::class, 'store'])->name('registrations.store');
 // =====================Warehouse Update Delete==
-Route::get('warehouses/{warehouse}/edit', [WarehouseController::class, 'edit'])->name('warehouses.edit');
+
+Route::get('warehouses/{warehouse}/edit', [WarehouseController::class, 'edit'])->name('warehouses.getWarehouse');
 Route::put('warehouses/{warehouse}', [WarehouseController::class, 'update'])->name('warehouses.update');
 Route::delete('warehouses/{warehouse}', [WarehouseController::class, 'destroy'])->name('warehouses.destroy');
+Route::get('/states/{countryId}', [WarehouseController::class, 'getStatesByCountry'])->name('getStatesByCountry');
+Route::get('/cities/{stateId}', [WarehouseController::class, 'getCitiesByState'])->name('getCitiesByState');
