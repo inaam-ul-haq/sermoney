@@ -2,15 +2,17 @@
 
 
     <div class="app-brand demo ">
-        <a href="index-2.html" class="app-brand-link">
-            <span class="app-brand-logo demo logo-span">
+        <a href="" class="app-brand-link">
+            {{-- <span class="app-brand-logo demo logo-span">
 
                 <img src="../assets/img/images/profile-img-Photoroom 1.png" alt="">
 
-            </span>
+            </span> --}}
             <div class="d-flex flex-column align-items-start justify-content-start">
-                <h6 class="app-brand-text demo menu-text fw-bold ms-2 mb-1">cristofer</h6>
-                <span class="ms-2 sub-heading">pacifc22</span>
+                <h6 class="app-brand-text demo menu-text fw-bold ms-2 mb-1" style="text-transform: uppercase;">
+                    {{ Auth::user()->name }}
+                </h6>
+                {{-- <span class="ms-2 sub-heading">pacifc22</span> --}}
 
             </div>
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-xl-none">
@@ -22,7 +24,7 @@
 
     <ul class="menu-inner py-1 d-flex align-items-center">
         <li class="menu-item mt-2 text-center ">
-            <a href="{{ route('fractuion') }}" class="menu-link">
+            {{-- <a href="{{ route('fractuion') }}" class="menu-link">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_17_1926)">
@@ -46,8 +48,9 @@
                     </defs>
                 </svg>
 
-                <div data-i18n="Dashboards" class="ms-2">EI Dorado</div>
-            </a>
+
+            </a> --}}
+              <div data-i18n="Dashboards" class="ms-2" style="color: white;margin-right:3.5rem"> Branch : Hato Montana</div>
         </li>
         <li class="line menu-item my-2"></li>
         <!-- Dashboards -->
@@ -144,7 +147,8 @@
         </li>
         <li class="menu-item mt-4">
             <div class="d-flex justify-content-center align-items-center flex-column">
-                <div class="d-flex justify-content-center align-items-center"><svg width="42" height="57"
+                <div class="d-flex justify-content-center align-items-center">
+                    {{-- <svg width="42" height="57"
                         viewBox="0 0 42 57" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M7.01328 11.2112L6.30884 23.8912L18.2844 16.8467L7.01328 11.2112Z" fill="#F0BC74" />
                         <path d="M19.6934 57V33.7533L36.6 45.0244L19.6934 57Z" fill="#F0BC74" />
@@ -175,11 +179,11 @@
                                     result="shape" />
                             </filter>
                         </defs>
-                    </svg>
+                    </svg> --}}
 
-                    <h6 class="mb-0 text-white ">ElizaApp</h6>
+                    {{-- <h6 class="mb-0 text-white ">ElizaApp</h6> --}}
                 </div>
-                <span class="version-span mt-2">v0.1.5.1</span>
+                {{-- <span class="version-span mt-2">v0.1.5.1</span> --}}
             </div>
         </li>
 

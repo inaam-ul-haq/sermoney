@@ -9,7 +9,7 @@ class Address extends Model
 {
     use HasFactory;
     public $table = 'addresses';
-    protected $fillable = ['warehouse_id', 'street', 'city', 'state', 'country', 'postal_code'];
+    protected $fillable = ['warehouse_id', 'street', 'city', 'state', 'country', 'postal_code','Telefono'];
 
     public function warehouse()
     {

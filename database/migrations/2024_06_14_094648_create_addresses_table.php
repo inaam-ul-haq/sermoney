@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('state')->nullable();
             $table->string('country');
             $table->string('postal_code', 20)->nullable();
+            $table->string('Telefono');->nullable();
             $table->timestamps();
         });
     }

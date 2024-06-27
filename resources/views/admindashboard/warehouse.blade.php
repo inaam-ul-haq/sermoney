@@ -97,7 +97,11 @@
                     </div>
                     <div class="col-md-12">
                         <label for="postal_code" class="form-label">Postal Code</label>
-                        <input type="text" class="form-control" id="postal_code" placeholder="Zip" name="postal_code">
+                        <input type="text" class="form-control" id="postal_code" placeholder="Postal Code" name="postal_code">
+                    </div>
+                      <div class="col-md-12">
+                        <label for="Telefono" class="form-label">Telefono</label>
+                        <input type="text" class="form-control" id="Telefono" placeholder="Telefono" name="Telefono">
                     </div>
                     <div class="col-12">
                         <button type="submit" class="btn w-100 sub_btn">Submit</button>

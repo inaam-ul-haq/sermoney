@@ -36,6 +36,7 @@ class WarehouseController extends Controller
             'city' => 'nullable|string|max:255',
             'state' => 'required|string|max:255',
             'postal_code' => 'required|string|max:20',
+            'Telefono'=>'required|string|max:12',
         ]);
         $country = Country::find($validated['country']);
         $state = State::find($validated['state']);
@@ -53,6 +54,7 @@ class WarehouseController extends Controller
             'state' => $state->name,
             'country' => $country->name,
             'postal_code' => $validated['postal_code'],
+            'Telefono'=>$validated['Telefono']
         ]);
 
         return redirect()->route('misl')->with('success', 'Warehouse and Address saved successfully');
@@ -70,6 +72,7 @@ class WarehouseController extends Controller
     }
     public function display()
     {
+
         $warehouses = Warehouse::with('addresses')->get();
         return view('userdashboard.addresses', compact('warehouses'));
     }
@@ -103,6 +106,7 @@ class WarehouseController extends Controller
             'city' => 'nullable|string|max:255',
             'state' => 'required|string|max:255',
             'postal_code' => 'required|string|max:20',
+            'Telefono'=>'required|string|max:12',
         ]);
         $country = Country::find($validated['country']);
         $state = State::find($validated['state']);
@@ -121,6 +125,8 @@ class WarehouseController extends Controller
             'state' => $state->name,
             'country' => $country->name,
             'postal_code' => $validated['postal_code'],
+            'Telefono'=>$validated['Telefono']
+
         ]);
 
         return redirect()->route('misl')->with('success', 'Warehouse and Address updated successfully');
