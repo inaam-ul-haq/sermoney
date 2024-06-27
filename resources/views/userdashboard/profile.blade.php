@@ -212,7 +212,7 @@
 
 
                 <!-- ========== Start footer ========== -->
-                <div class="col-12 my-5">
+                {{-- <div class="col-12 my-5">
                     <div class="d-flex justify-content-center align-items-center flex-column footer-logo">
                         <div class=" d-flex justify-content-center align-items-start flex-column">
                             <span>Powered By</span>
@@ -226,7 +226,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- ========== End footer ========== -->
 
 

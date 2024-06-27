@@ -14,35 +14,19 @@
             background-color: darkred;
         }
     </style>
-    <!-- ?PROD Only: Google Tag Manager (noscript) (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DDHKGP" height="0" width="0"
             style="display: none; visibility: hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
-    <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar  ">
         <div class="layout-container">
-            <!-- Menu -->
             <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0   d-xl-none ">
                 <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
                     <i class="bx bx-menu bx-md"></i>
                 </a>
             </div>
-
-            <!-- / Menu -->
-
-
-
-            <!-- Layout container -->
             <div class="layout-page">
-
-                <!-- Content wrapper -->
                 <div class="content-wrapper">
-
-                    <!-- Content -->
-
                     <div class="container-xxl flex-grow-1 container-p-y">
-
                         <div class="row pt-3 pb-4">
                             <div class="col-12 mb-md-3 mt-xl-0 mt-5">
                                 <div class="top-container">
@@ -54,7 +38,6 @@
                         <div class="row justify-content-between">
                             <div class="col-sm-6">
                                 <div>
-                                    <!-- Search form -->
                     <form class="d-flex" method="GET" action="{{ route('fractuion') }}">
                         <button class="btn btn-outline-dark me-2 px-3" type="submit">
                             <svg width="20" height="20" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -63,7 +46,6 @@
                         </button>
                         <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name="search" value="{{ $search }}">
                     </form>
-                    <!-- /Search form -->
                                 </div>
                             </div>
                             <div class="col-sm-5 d-flex justify-content-sm-end mt-sm-0 mt-3">
@@ -94,7 +76,6 @@
                             </div>
 
                         </div>
-                        <!-- Responsive Table -->
                         <div class="col-12">
                             <div class="card table-card mt-3">
                                 <h5 class="card-header table-header">0 Resultado(s)</h5>
@@ -138,9 +119,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!--/ Responsive Table -->
 
-                        <!-- ========== Start slider ========== -->
                         <div class="row justify-content-center mt-5">
                             <div class="d-flex justify-content-center align-items-center">
                                 <nav aria-label="..." class="slider-div d-flex justify-content-center align-items-center">
@@ -163,26 +142,7 @@
                             </div>
 
                         </div>
-                        <!-- ========== End slider ========== -->
 
-
-
-                        <!-- ========== Start footer ========== -->
-                        <div class="col-12 my-5">
-                            <div class="d-flex justify-content-center align-items-center flex-column footer-logo">
-                                <div class=" d-flex justify-content-center align-items-start flex-column">
-                                    <span>Powered By</span>
-                                    <div class="d-flex justify-content-center align-items-center">
-                                        <span class="footer-img-span"><img src="../assets/img/images/Group 1.png"
-                                                alt=""></span>
-                                        <div class="ms-2">
-                                            <h4 class="mb-0">aben</h4>
-                                            <span class="pb-0">Technology Developments</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

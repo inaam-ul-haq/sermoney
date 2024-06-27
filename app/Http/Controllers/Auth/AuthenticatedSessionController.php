@@ -51,13 +51,6 @@ class AuthenticatedSessionController extends Controller
             return redirect()->route('index');
         }
 
-        if ($user->status == 'pending' || $user->status == 'rejected') {
-            Auth::logout();
-            return redirect()->route('login')->withErrors([
-                'status' => 'Your account status is ' . $user->status . '. You cannot log in at this time.',
-            ]);
-        }
-
         return redirect()->route('useerpanel')->with('status', 'User logged in');
     }
     /**

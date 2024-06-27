@@ -22,8 +22,6 @@
 
             <!-- Layout container -->
             <div class="layout-page">
-
-                <!-- Content wrapper -->
                 <div class="wrapper mt-xl-0 mt-5">
                     <div class="container-fluid">
                         <div class="row">
@@ -179,6 +177,11 @@
                                                                     <input type="text" class="form-control"
                                                                         id="postal_code" name="postal_code" required>
                                                                 </div>
+                                                                 <div class="form-group">
+                                                                    <label for="postal_code">Telefono</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="Telefono" name="Telefono" required>
+                                                                </div>
 
                                                                 <button type="submit"
                                                                     class="btn btn-success">Update</button>
@@ -203,28 +206,7 @@
                     </div>
 
                 </div>
-                <!-- / Content -->
 
-
-
-
-                <!-- ========== Start footer ========== -->
-                <div class="col-12 my-5">
-                    <div class="d-flex justify-content-center align-items-center flex-column footer-logo">
-                        <div class=" d-flex justify-content-center align-items-start flex-column">
-                            <span>Powered By</span>
-                            <div class="d-flex justify-content-center align-items-center">
-                                <span class="footer-img-span"><img src="../assets/img/images/Group 1.png"
-                                        alt=""></span>
-                                <div class="ms-2">
-                                    <h4 class="mb-0">aben</h4>
-                                    <span class="pb-0">Technology Developments</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ========== End footer ========== -->
             </div>
             <!-- Content wrapper -->
         </div>
@@ -240,59 +222,6 @@
     </div>
     <!-- / Layout wrapper -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    {{-- <script>
-        $(document).ready(function() {
-            $('.btn-success').on('click', function() {
-                var warehouseId = $(this).data('id');
-                var url = '{{ route('warehouses.getWarehouse', ':id') }}';
-                url = url.replace(':id', warehouseId);
-
-                $.ajax({
-                    url: url,
-                    method: 'GET',
-                    success: function(data) {
-                        $('#editWarehouseForm').attr('action',
-                            '{{ route('warehouses.update', ':id') }}'.replace(':id',
-                                warehouseId));
-                        $('#warehouse').val(data.warehouse.name);
-                        $('#type').val(data.warehouse.type);
-                        $('#street_no').val(data.address.street);
-
-                        // Populate the country select
-                        var countryOptions = '<option value="">Choose Country...</option>';
-                        $.each(data.countries, function(index, country) {
-                            countryOptions += '<option value="' + country.id + '"' + (
-                                country.id == data.address.country ?
-                                ' selected' : '') + '>' + country.name + '</option>';
-                        });
-                        $('#country').html(countryOptions);
-
-                        // Populate the state select
-                        var stateOptions = '<option value="">Choose State...</option>';
-                        $.each(data.states, function(index, state) {
-                            stateOptions += '<option value="' + state.id + '"' + (state
-                                    .id == data.address.state ? ' selected' : '') +
-                                '>' + state.name + '</option>';
-                        });
-                        $('#state').html(stateOptions);
-
-                        // Populate the city select
-                        var cityOptions = '<option value="">Choose City...</option>';
-                        $.each(data.cities, function(index, city) {
-                            cityOptions += '<option value="' + city.id + '"' + (city
-                                    .id == data.address.city ? ' selected' : '') +
-                                '>' + city.name + '</option>';
-                        });
-                        $('#city').html(cityOptions);
-
-                        $('#postal_code').val(data.address.postal_code);
-
-                        $('#editWarehouseModal').modal('show');
-                    }
-                });
-            });
-        });
-    </script> --}}
     <script>
         $(document).ready(function() {
             // Function to load states based on the selected country
@@ -349,6 +278,7 @@
                                 warehouseId));
                         $('#warehouse').val(data.warehouse.name);
                         $('#type').val(data.warehouse.type);
+                        $('#street_no').val(data.address.street);
                         $('#street_no').val(data.address.street);
 
                         // Populate the country select
