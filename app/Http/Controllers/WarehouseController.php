@@ -7,6 +7,7 @@ use App\Models\State;
 use App\Models\Address;
 use App\Models\Country;
 use App\Models\Warehouse;
+use App\Models\Registration;
 use Illuminate\Http\Request;
 
 class WarehouseController extends Controller
@@ -70,11 +71,12 @@ class WarehouseController extends Controller
         $cities = City::where('state_id', $state_id)->get();
         return response()->json($cities);
     }
-    public function display()
+    public function display(Request $request)
     {
-
+        $user = $request->user();
         $warehouses = Warehouse::with('addresses')->get();
-        return view('userdashboard.addresses', compact('warehouses'));
+        $registration = Registration::where('user_id', $user->id)->first();
+        return view('userdashboard.addresses', compact('warehouses','registration'));
     }
 
 
