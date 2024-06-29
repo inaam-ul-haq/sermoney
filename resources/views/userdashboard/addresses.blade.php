@@ -93,6 +93,10 @@
                                                                                 <td class="fw-bold">Postal Code</td>
                                                                                 <td>{{ $address->postal_code }}</td>
                                                                             </tr>
+                                                                            <tr>
+                                                                                <td class="fw-bold">Telefono</td>
+                                                                                <td>{{ $address->Telefono}}</td>
+                                                                            </tr>
                                                                         @endforeach
                                                                     </tbody>
                                                                 </table>
