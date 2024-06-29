@@ -28,10 +28,10 @@ class WarehouseController extends Controller
     }
     public function store(Request $request)
     {
-        // dd('23456789');
+// dd($request);
         $validated = $request->validate([
             'warehouse' => 'required|string|max:255',
-            'type' => 'required|string|in:air,martial',
+            'type' => 'required|string|in:AIR,MARITIME',
             'street_no' => 'required|string|max:255',
             'country' => 'required|string|max:255',
             'city' => 'nullable|string|max:255',
@@ -39,6 +39,7 @@ class WarehouseController extends Controller
             'postal_code' => 'required|string|max:20',
             'Telefono'=>'required|string|max:12',
         ]);
+
         $country = Country::find($validated['country']);
         $state = State::find($validated['state']);
         $city = City::find($validated['city']);
@@ -102,7 +103,7 @@ class WarehouseController extends Controller
     {
         $validated = $request->validate([
             'warehouse' => 'required|string|max:255',
-            'type' => 'required|string|in:air,martial',
+            'type' => 'required|string|in:AIR,MARITIME',
             'street_no' => 'required|string|max:255',
             'country' => 'required|string|max:255',
             'city' => 'nullable|string|max:255',

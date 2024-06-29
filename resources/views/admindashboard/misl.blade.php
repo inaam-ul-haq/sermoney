@@ -141,8 +141,8 @@
                                                                     <label for="type">Type</label>
                                                                     <select class="form-control" id="type"
                                                                         name="type" required>
-                                                                        <option value="air">Air</option>
-                                                                        <option value="martial">Martial</option>
+                                                                        <option value="AIR">AIR</option>
+                                                                        <option value="MARITIME">MARITIME</option>
                                                                     </select>
                                                                 </div>
 

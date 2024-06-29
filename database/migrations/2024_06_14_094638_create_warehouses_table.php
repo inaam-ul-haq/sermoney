@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('warehouses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->enum('type', ['air', 'martial']);
+            $table->enum('type', ['AIR', 'MARITIME']);
             $table->timestamps();
         });
     }
