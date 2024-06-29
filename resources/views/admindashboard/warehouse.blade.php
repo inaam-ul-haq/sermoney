@@ -65,8 +65,8 @@
                     <div class="col-md-12">
                         <label for="inputType" class="form-label">Type</label>
                         <select id="inputType" class="form-select" name="type">
-                            <option value="air">Air</option>
-                            <option value="martial">Martial</option>
+                            <option value="AIR">AIR</option>
+                            <option value="MARITIME">MARITIME</option>
                         </select>
                     </div>
                     <div class="col-md-12">
