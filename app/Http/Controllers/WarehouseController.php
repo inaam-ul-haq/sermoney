@@ -29,7 +29,7 @@ class WarehouseController extends Controller
     }
     public function store(Request $request)
     {
-// dd($request);
+        // dd($request);
         $validated = $request->validate([
             'warehouse' => 'required|string|max:255',
             'type' => 'required|string|in:AIR,MARITIME',
@@ -38,9 +38,9 @@ class WarehouseController extends Controller
             'city' => 'nullable|string|max:255',
             'state' => 'required|string|max:255',
             'postal_code' => 'required|string|max:20',
-            'Telefono'=>'required|string|max:12',
+            'Telefono' => 'required|string|max:12',
         ]);
-
+        // dd('ok');
         $country = Country::find($validated['country']);
         $state = State::find($validated['state']);
         $city = City::find($validated['city']);
@@ -57,7 +57,7 @@ class WarehouseController extends Controller
             'state' => $state->name,
             'country' => $country->name,
             'postal_code' => $validated['postal_code'],
-            'Telefono'=>$validated['Telefono']
+            'Telefono' => $validated['Telefono']
         ]);
 
         return redirect()->route('misl')->with('success', 'Warehouse and Address saved successfully');
@@ -78,8 +78,7 @@ class WarehouseController extends Controller
         $user = $request->user();
         $warehouses = Warehouse::with('addresses')->get();
         $registration = Registration::where('user_id', $user->id)->first();
-        return view('userdashboard.addresses', compact('warehouses','registration'));
-
+        return view('userdashboard.addresses', compact('warehouses', 'registration'));
     }
 
 
@@ -111,7 +110,7 @@ class WarehouseController extends Controller
             'city' => 'nullable|string|max:255',
             'state' => 'required|string|max:255',
             'postal_code' => 'required|string|max:20',
-            'Telefono'=>'required|string|max:12',
+            'Telefono' => 'required|string|max:12',
         ]);
         $country = Country::find($validated['country']);
         $state = State::find($validated['state']);
@@ -130,7 +129,7 @@ class WarehouseController extends Controller
             'state' => $state->name,
             'country' => $country->name,
             'postal_code' => $validated['postal_code'],
-            'Telefono'=>$validated['Telefono']
+            'Telefono' => $validated['Telefono']
 
         ]);
 

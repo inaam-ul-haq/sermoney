@@ -101,9 +101,9 @@
                                                                             <td class="fw-bold">Postal Code</td>
                                                                             <td>{{ $address->postal_code }}</td>
                                                                         </tr>
-                                                                           <tr>
+                                                                        <tr>
                                                                             <td class="fw-bold">Telefono</td>
-                                                                            <td>{{ $address->Telefono}}</td>
+                                                                            <td>{{ $address->Telefono }}</td>
                                                                         </tr>
                                                                     @endforeach
                                                                 </tbody>
@@ -181,7 +181,7 @@
                                                                     <input type="text" class="form-control"
                                                                         id="postal_code" name="postal_code" required>
                                                                 </div>
-                                                                 <div class="form-group">
+                                                                <div class="form-group">
                                                                     <label for="postal_code">Telefono</label>
                                                                     <input type="text" class="form-control"
                                                                         id="Telefono" name="Telefono" required>
