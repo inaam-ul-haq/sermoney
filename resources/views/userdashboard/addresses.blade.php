@@ -17,7 +17,7 @@
                                 <i class="bx bx-menu bx-md"></i>
                             </a>
                         </div>
-                      
+
                         <div class="row my-2">
                             <div class="col-lg-9 table-content p-3 mt-4 rounded">
                                 @php
@@ -30,7 +30,7 @@
                                         <div class="row">
                                             <!-- Loop through warehouses and add data-id attribute to the Update button -->
                                             @foreach ($warehouses as $warehouse)
-                                                <div class="col-md-12 col-12 mb-3">
+                                                <div class="col-md-6 col-12 mb-3">
                                                     <div class="card">
                                                         <div class="card-header d-flex justify-content-between">
                                                             <div class="">
@@ -114,7 +114,6 @@
                                 @endif
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>

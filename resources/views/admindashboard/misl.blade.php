@@ -101,9 +101,9 @@
                                                                             <td class="fw-bold">Postal Code</td>
                                                                             <td>{{ $address->postal_code }}</td>
                                                                         </tr>
-                                                                         <tr>
+                                                                           <tr>
                                                                             <td class="fw-bold">Telefono</td>
-                                                                            <td>{{ $address->Telefono }}</td>
+                                                                            <td>{{ $address->Telefono}}</td>
                                                                         </tr>
                                                                     @endforeach
                                                                 </tbody>
@@ -141,8 +141,8 @@
                                                                     <label for="type">Type</label>
                                                                     <select class="form-control" id="type"
                                                                         name="type" required>
-                                                                        <option value="air">Air</option>
-                                                                        <option value="martial">Martial</option>
+                                                                        <option value="AIR">AIR</option>
+                                                                        <option value="MARITIME">MARITIME</option>
                                                                     </select>
                                                                 </div>
 
