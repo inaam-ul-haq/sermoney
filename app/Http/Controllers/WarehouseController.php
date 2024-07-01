@@ -75,7 +75,6 @@ class WarehouseController extends Controller
     }
     public function display(Request $request)
     {
-
         $user = $request->user();
         $warehouses = Warehouse::with('addresses')->get();
         $registration = Registration::where('user_id', $user->id)->first();
