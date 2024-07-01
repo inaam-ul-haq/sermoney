@@ -20,48 +20,53 @@
 
                         <div class="row my-2">
                             <div class="col-lg-9 table-content p-3 mt-4 rounded">
-                                @php
-                                    $user = Auth::user();
-                                @endphp
-                                @if ($user->status === 'accepted')
-                                    @if ($warehouses->isEmpty())
-                                        <p>No warehouses found.</p>
-                                    @else
-                                        <div class="row">
-                                            <!-- Loop through warehouses and add data-id attribute to the Update button -->
-                                            @foreach ($warehouses as $warehouse)
-                                                <div class="col-md-6 col-12 mb-3">
-                                                    <div class="card">
-                                                        <div class="card-header d-flex justify-content-between">
-                                                            <div class="">
-                                                                <h5>{{ $warehouse->name }}</h5>
-                                                            </div>
-                                                            <div class="">
-                                                                <button type="button" class="btn btn-sm btn-success"
-                                                                    onclick="copyToClipboard('address-{{ $warehouse->id }}')">
-                                                                    Copy
-                                                                </button>
-                                                            </div>
+                               @php
+   $user= Auth::user();
+@endphp
+  @if ($user->status === 'accepted')
+                                @if ($warehouses->isEmpty())
+                                    <p>No warehouses found.</p>
+                                @else
+                                    <div class="row">
+                                        <!-- Loop through warehouses and add data-id attribute to the Update button -->
+                                        @foreach ($warehouses as $warehouse)
+                                            <div class="col-md-12 col-12 mb-3">
+                                                <div class="card">
+                                                    <div class="card-header d-flex justify-content-between">
+                                                        <div class="">
+                                                            <h5>{{ $warehouse->name }}</h5>
                                                         </div>
-                                                        <div class="card-body">
-                                                            @if ($warehouse->addresses->isEmpty())
-                                                                <p>No addresses found for this warehouse.</p>
-                                                            @else
-                                                                <div id="address-{{ $warehouse->id }}" class="d-none">
-                                                                    @foreach ($warehouse->addresses as $address)
-                                                                        Country: {{ $address->country }},
-                                                                        State: {{ $address->state }},
-                                                                        City: {{ $address->city }},
-                                                                        Street: {{ $address->street }},
-                                                                        Postal Code: {{ $address->postal_code }}
-                                                                        <br>
-                                                                    @endforeach
+                                                        <div class="">
+                                                            <button type="button" class="btn btn-sm btn-success" onclick="copyToClipboard('address-{{ $warehouse->id }}')">
+                                                                Copy
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        @if ($warehouse->addresses->isEmpty())
+                                                            <p>No addresses found for this warehouse.</p>
+                                                        @else
+                                                            <div id="address-{{ $warehouse->id }}" class="d-none">
+                                                                @foreach ($warehouse->addresses as $address)
+                                                                    Country: {{ $address->country }},
+                                                                    State: {{ $address->state }},
+                                                                    City: {{ $address->city }},
+                                                                    Street: {{ $address->street }},
+                                                                    Postal Code: {{ $address->postal_code }}
+                                                                    <br>
+                                                                @endforeach
                                                                 </div>
                                                                 <table class="table table-bordered">
                                                                     <tbody>
                                                                         <tr>
                                                                             <td class="fw-bold">Type</td>
-                                                                            <td>{{ $warehouse->type }}</td>
+                                                                            <td>  {{ $user->name }}
+                                                                            @if ($warehouse->type == 'AIR')
+                                                                                SIRM
+                                                                            @elseif ($warehouse->type == 'MARITIME')
+                                                                                SIRM MAR
+                                                                            @endif
+                                                                            {{ $registration->pobox }}</td>
                                                                         </tr>
                                                                         @foreach ($warehouse->addresses as $address)
                                                                             <tr>
@@ -99,8 +104,11 @@
                                         </div>
                                     @endif
                                 @else
-                                    <div class="card bg-warning text-dark"">
-                                        <div class="card-body">
+                                       <div class="card bg-warning text-dark"
+                                        style="    border-radius: 0.375rem !important;
+    top: 12rem;
+    margin-left: 25rem;width: 26rem;">
+                                         <div class="card-body">
                                             @if ($user->status === 'pending')
                                                 <p class="card-text">Your profile is pending. Please wait for approval.</p>
                                             @elseif ($user->status === 'rejected')
