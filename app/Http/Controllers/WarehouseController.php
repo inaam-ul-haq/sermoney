@@ -9,6 +9,7 @@ use App\Models\Country;
 use App\Models\Warehouse;
 use App\Models\Registration;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WarehouseController extends Controller
 {
@@ -78,6 +79,7 @@ class WarehouseController extends Controller
         $warehouses = Warehouse::with('addresses')->get();
         $registration = Registration::where('user_id', $user->id)->first();
         return view('userdashboard.addresses', compact('warehouses','registration'));
+
     }
 
 
