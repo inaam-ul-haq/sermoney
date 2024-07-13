@@ -60,6 +60,7 @@ class ProfileController extends Controller
             'referral' => 'required|in:Google,FaceBook,Insta',
             'mob_no' => 'required|string|max:255',
             'office_no' => 'required|string|max:255',
+            'last_name'=>'required|string',
             'username' => 'string|max:255',
             'id_pass'=>'string',
             'del_address'=>'string|max:255'
@@ -69,7 +70,7 @@ class ProfileController extends Controller
         $this->validate($request, $registrationRules);
     
         $userData = $request->only(['name', 'email', 'password']);
-        $registrationData = $request->only(['creation_date', 'reference', 'referral', 'mob_no', 'office_no', 'username', 'id_pass', 'del_address']);
+        $registrationData = $request->only(['creation_date', 'reference','last_name', 'referral', 'mob_no', 'office_no', 'username', 'id_pass', 'del_address']);
         $user = Auth::user();
         $user->update($userData);
         $registration = $user->registration ?: new Registration();

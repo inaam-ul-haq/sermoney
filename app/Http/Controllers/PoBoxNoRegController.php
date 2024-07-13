@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\PoBox;
 use App\Models\Registration;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -18,18 +19,36 @@ class PoBoxNoRegController extends Controller
 public function store(Request $request)
     {
 
+        $validator = Validator::make($request->all(), [
+            'pobox' => 'required|string',
+            'email' => 'required|email',
+            'name' => 'required|string',
+            'last_name' => 'required|string',
+            'mob_no' => 'required|string',
+            'office_no' => 'required|string',
+            'id_pass' => 'required|string',
+            'country' => 'required|string',
+            'province' => 'required|string',
+            'city' => 'required|string',
+            'company' => 'required|string',
+            'del_address' => 'required|string',
+            'password' => 'required|string|confirmed',
+            'g-recaptcha-response' => 'required|captcha',
+        ]);
 
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
         // Check if the email exists in the PoBox table
         $poBox = PoBox::where('email', $request->email)->first();;
-        // dd($poBox->pobox_no);
+ 
         if (!$poBox) {
             return redirect()->back()->with('error', 'The provided email does not exist. Please provide a valid email.');
         }
         if ($poBox->pobox_no == $request->pobox) {
-// dd($request->all());
+
             $user = User::create([
                 'name' => $request->name,
-                'last_name'=>$request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ]);
@@ -37,6 +56,7 @@ public function store(Request $request)
 
             Registration::create([
                 'user_id' => $user->id,
+                'last_name'=>$request->last_name,
                 'pobox' => $request->pobox,
                 'mob_no' => $request->mob_no,
                 'office_no' => $request->office_no,

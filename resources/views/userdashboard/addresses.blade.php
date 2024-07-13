@@ -26,7 +26,7 @@
                         <div class="d-flex flex-wrap">
                             <!-- Loop through warehouses and add data-id attribute to the Update button -->
                             @foreach ($warehouses as $warehouse)
-                                <div class="col-md-6 col-12 mb-3" style="width:100% !important;">
+                                <div class="col-md-6 col-12 mb-3" style="width:41% !important;">
                                     <div class="card">
                                         <div class="card-header d-flex justify-content-between">
                                             <div>
@@ -57,7 +57,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <td class="fw-bold">Type</td>
-                                                            <td>{{ $user->name }}
+                                                            <td>{{ $user->name }} {{ $registration->last_name }}
                                                                 @if ($warehouse->type == 'AIR')
                                                                     SIRM
                                                                 @elseif ($warehouse->type == 'MARITIME')

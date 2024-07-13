@@ -47,11 +47,12 @@ class AuthenticatedSessionController extends Controller
 
         $user = Auth::user();
 
-        if ($user->hasRole('admin')) {
+        if($user->hasRole('admin')){
             return redirect()->route('index');
+        }else{
+            return redirect()->route('useerpanel');
         }
-
-        return redirect()->route('useerpanel')->with('status', 'User logged in');
+        // return redirect()->route('useerpanel')->with('status', 'User logged in');
     }
     /**
      * Destroy an authenticated session.

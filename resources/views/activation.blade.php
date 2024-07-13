@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Activation Email</title>
+    <title>Activación PO Box SirMoney Express </title>
     <style>
         .para {
             text-align: center;
@@ -24,22 +24,21 @@
 </head>
 
 <body>
-    <h1>Po Box Email</h1>
+    <h1>Activación Nuevo PO Box SirMoney Express</h1>
     <div style="display: flex; justify-content: center;">
-        <img src="{{ asset('assets/images/Capture.PNG') }}" alt="">
+      <!-- <img src="data:image/png;base64,{{ $base64Image }}" alt="logo" />  -->
+    <img src="{{ asset('assets/images/Capture.jpeg') }}" alt="">
     </div>
-    <p class="para">Hello {{ $name }},</p>
-    <p>You made the best decision in using Priority Express as your PO BOX Service provider for your purchases and
-        orders online.</p>
+    <p class="para">Hola{{ $name }},</p>
+    <p>Tomó la mejor decisión al utilizar SirMoney Express como su proveedor de servicio de PO BOX para sus compras y pedidos en línea..</p>
     <hr>
-    <p class="para">For ACTIVATION, you must enter the number of <br> PO BOX → <span>{{ $poBoxNumber }}</span> <br>
-        and complete
-        the
-        information in the <br>
-        <a href=""> ACTIVATION FORM</a>.
+    <p class="para">Para la ACTIVACIÓN, deberás ingresar el número de <br> PO BOX → <span>{{ $poBoxNumber }}</span> <br>
+    y completar la información en el <br>
+        <a href="https://dev.sirmoney.net/po-reg">formulario de activacion</a>.
+      
     </p>
     <hr>
-    <p class="para">Thanks for choosing us!</p>
+    <p class="para">¡Gracias por Elegirnos!</p>
 
 </body>
 

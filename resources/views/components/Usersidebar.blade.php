@@ -7,7 +7,7 @@
 
 
     <div class="app-brand demo ">
-        <a href="index-2.html" class="app-brand-link">
+        <a href="#" class="app-brand-link">
             {{-- <span class="app-brand-logo demo logo-span">
 
                 <img src="../assets/img/images/profile-img-Photoroom 1.png" alt="">
@@ -56,7 +56,7 @@
 
       <li class="menu-item">
 
-           <a href="{{ url('https://fastcargotracking.com/tracking') }}" class="menu-link">
+           <a href="{{ route('user.tracking') }}" class="menu-link">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-car">
             <path d="M3 12l2-5h14l2 5"></path>
             <circle cx="7.5" cy="17.5" r="2.5"></circle>

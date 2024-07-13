@@ -41,7 +41,7 @@
                                         {{ session('success') }}
                                     </div>
                                 @endif
-                                    <form method="POST" action="{{ route('update') }}">
+                                  <!--  <form method="POST" action="{{ route('update') }}">
                                         @csrf
 
                                         <div class="col d-flex flex-column">
@@ -148,6 +148,190 @@
                                                         <div class="input-group">
                                                             <input type="password" class="form-control" id="confirm-password" name="password_confirmation" placeholder="">
                                                             <span class="password-toggle input-group-text" onclick="togglePasswordVisibility('confirm-password')">
+                                                                <i class="fas fa-search"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="d-flex justify-content-end mt-3">
+
+                                                    <button type="submit" class="btn btn-custom">Guardar
+                                                        cambios</button>
+
+                                                </div>
+
+
+
+                                            </div>
+
+                                        </div>
+                                    </form> -->
+
+                                    <form method="POST" action="{{ route('update') }}">
+                                        @csrf
+
+                                        <div class="col d-flex flex-column">
+                                            <div class="row mt-2">
+
+
+                                                <div class="col-md-6">
+                                                    <label for="creation-date"
+                                                        class="form-label font-cust mt-md-0 mt-3">Fecha de creación <span
+                                                            class="star">*</span></label>
+                                                    <input type="date" class="form-control bg-custom" id="creation-date"
+                                                        name="creation_date" value="{{ $user->created_at->toDateString() }}"
+                                                        readonly>
+
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="email" class="form-label font-cust">Correo electrónico
+                                                        <span class="star">*</span></label>
+                                                    <input type="text" class="form-control" id="email" name="email"
+                                                        value="{{ $user->email }}" readonly>
+                                                </div>
+
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-md-6">
+                                                    <label for="reference" class="form-label font-cust">Referencia <span
+                                                            class="star">*</span></label>
+                                                    <select name="reference" class="form-select bg-custom cust-new-font"
+                                                        id="reference" required>
+                                                        <option value="" disabled>Select Reference</option>
+                                                        <option value="Add"
+                                                            {{ $registration && $registration->reference == 'Add' ? 'selected' : '' }}>
+                                                            Add</option>
+                                                        <option value="Staf"
+                                                            {{ $registration && $registration->reference == 'Staf' ? 'selected' : '' }}>
+                                                            Staf</option>
+                                                        <option value="RepostingAgents"
+                                                            {{ $registration && $registration->reference == 'RepostingAgents' ? 'selected' : '' }}>
+                                                            Reposting Agents</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="referral" class="form-label font-cust mt-md-0 mt-3">¿Cómo te
+                                                        enteraste de nosotros? <span class="star">*</span></label>
+                                                    <select name="referral" class="form-select cust-new-font" id="referral"
+                                                        required>
+                                                        <option value="" disabled>Select Referral</option>
+                                                        <option value="Google"
+                                                            {{ $registration && $registration->news_platform == 'Google' ? 'selected' : '' }}>
+                                                            Google</option>
+                                                        <option value="FaceBook"
+                                                            {{ $registration && $registration->news_platform == 'FaceBook' ? 'selected' : '' }}>
+                                                            FaceBook</option>
+                                                        <option value="Insta"
+                                                            {{ $registration && $registration->news_platform == 'Insta' ? 'selected' : '' }}>
+                                                            Instagram</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="row mt-3">
+
+                                            </div>
+
+                                            <div class="row mt-3">
+                                                <div class="col-md-6">
+                                                    <label for="name" class="form-label font-cust">Nombre <span
+                                                            class="star">*</span></label>
+                                                    <input type="text" class="form-control" id="name" name="name"
+                                                        value="{{ $user->name ?? '' }}" placeholder="">
+                                                </div>
+                                                  <div class="col-md-6">
+                                                    <label for="last_name" class="form-label font-cust">last Name <span
+                                                            class="star">*</span></label>
+                                                    <input type="text" class="form-control" id="last_name" name="last_name"
+                                                        value="{{ $registration->last_name ?? '' }}" placeholder="">
+                                                </div>
+
+
+
+                                            </div>
+
+                                            <div class="row mt-3">
+                                              
+                                                <div class="col-md-6">
+                                                    <label for="secondary-phone"
+                                                        class="form-label font-cust mt-md-0 mt-3">Teléfono <span
+                                                            class="star">*</span></label>
+                                                    <input type="text" class="form-control" id="secondary-phone"
+                                                        name="mob_no" value="{{ $registration->mob_no ?? '' }}"
+                                                        placeholder="">
+                                                </div>
+                                                  <div class="col-md-6">
+                                                   
+                                                        <label for="phone"
+                                                            class="form-label font-cust mt-md-0 mt-3">Teléfono <span
+                                                                class="star">*</span></label>
+                                                        <input type="text" class="form-control" id="phone"
+                                                            name="office_no" value="{{ $registration->office_no ?? '' }}"
+                                                            placeholder="">
+                                          
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row mt-3">
+                                                <div class="col-md-6">
+                                                    <label for="del_address" class="form-label font-cust">Dirección de
+                                                        entrega <span class="star">*</span></label>
+                                                    <input type="text" class="form-control" id="del_address"
+                                                        name="del_address"
+                                                        value="{{ $registration->del_address ?? '' }}">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="id_pass"
+                                                        class="form-label font-cust mt-md-0 mt-3">Pasaporte<span
+                                                            class="star">*</span></label>
+                                                    <input type="text" class="form-control" id="id_pass"
+                                                        name="id_pass" value="{{ $registration->id_pass ?? '' }}"
+                                                        placeholder="">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row mt-3">
+                                                <div class="col-md-6">
+                                                    <label for="username" class="form-label font-cust">Nombre de usuario
+                                                        <span class="star">*</span></label>
+                                                    <input type="text" class="form-control" id="username"
+                                                        name="username" value="{{ $registration->username ?? '' }}"
+                                                        placeholder="">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="address"
+                                                        class="form-label font-cust mt-md-0 mt-3">Dirección <span
+                                                            class="star">*</span></label>
+                                                    <input type="text" class="form-control" id="address"
+                                                        name="address" value="{{ $registration->del_address ?? '' }}"
+                                                        placeholder="">
+
+                                                </div>
+                                                <div class="row mt-3 mb-3">
+                                                    <div class="col-md-6">
+                                                        <label for="new-password" class="form-label font-cust">Nueva
+                                                            contraseña <span class="star">*</span></label>
+                                                        <div class="input-group">
+                                                            <input type="password" class="form-control" id="new-password"
+                                                                name="password" placeholder="Old Password">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="confirm-password"
+                                                            class="form-label font-cust">Confirmar contraseña <span
+                                                                class="star">*</span></label>
+                                                        <div class="input-group">
+                                                            <input type="password" class="form-control"
+                                                                id="confirm-password" name="password_confirmation"
+                                                                placeholder="">
+                                                            <span class="password-toggle input-group-text"
+                                                                onclick="togglePasswordVisibility('confirm-password')">
                                                                 <i class="fas fa-search"></i>
                                                             </span>
                                                         </div>

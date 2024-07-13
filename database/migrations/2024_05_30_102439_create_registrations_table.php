@@ -15,6 +15,7 @@ class CreateRegistrationsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('pobox')->nullable();  
             $table->string('username')->nullable();
+            $table->string('last_name'); 
             $table->string('mob_no');
             $table->string('office_no');
             $table->string('id_pass');

@@ -11,6 +11,9 @@
      </script>
      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
      <title>Document</title>
+
+     {!! NoCaptcha::renderJs() !!}
+
      <style>
          .step {
              font-family: "Inter", sans-serif;
@@ -155,7 +158,7 @@
          </div>
      @endif
      <div class="container">
-         <form action="{{ route('form.submit') }}" method="POST">
+         <form action="{{ route('form.submit') }}" method="POST" id="demo-form">
              @csrf
              <div class="row">
                  <div class="col-lg-3 col-md-5 mt-2">
@@ -284,17 +287,20 @@
                      </div>
                  </div>
                  <div class="container">
-                     <div class="row mt-3 mb-3">
-                         <div class="col-lg-3 col-md-5"></div>
-                         <div class="col-lg-4 col-md-5">
-                             <div class="section-robot d-flex justify-content-between align-items-center">
-                                 {!! NoCaptcha::display() !!}
-                             </div>
-                         </div>
-                         <div class="col-lg-5 col-md-2"></div>
-                     </div>
-                 </div>
-                 <div class="container">
+        <div class="row mt-3 mb-3">
+            <div class="col-lg-3 col-md-5"></div>
+            <div class="col-lg-4 col-md-5">
+                <div class="section-robot d-flex justify-content-between align-items-center">
+                    {!! NoCaptcha::display() !!}
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-2"></div>
+        </div>
+    </div>
+
+               
+
+    <div class="container">
                      <div class="row mt-3 mb-5">
                          <div class="col-lg-3 col-md-5"></div>
                          <div class="col-lg-3 col-md-3">
@@ -303,15 +309,17 @@
                          <div class="col-lg-6 col-md-4"> </div>
                      </div>
                  </div>
-             </div>
+             <!-- </div> -->
          </form>
          {!! NoCaptcha::renderJs() !!}
      </div>
-
-
-
-
-
+     <script src="https://www.google.com/recaptcha/api.js"></script>
+     <script>
+   function onSubmit(token) {
+     document.getElementById("demo-form").submit();
+   }
+ </script>
  </body>
 
  </html>
+

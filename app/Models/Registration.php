@@ -22,6 +22,7 @@ class Registration extends Model
         'office_no',
         'id_pass',
         'country',
+        'last_name',
         'province',
         'city',
         'company',

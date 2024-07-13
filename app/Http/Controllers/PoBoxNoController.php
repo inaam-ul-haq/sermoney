@@ -17,8 +17,9 @@ class PoBoxNoController extends Controller
             'email' => 'required|email|unique:po_boxes,email'
         ]);
 
+    
         // Generate or fetch PO Box number from the database
-        $poBoxNumber = PoBox::max('pobox_no') ?? 200; // Get the maximum PO Box number or set it as 200 if no records exist
+       $poBoxNumber = PoBox::max('pobox_no') ?? 200; // Get the maximum PO Box number or set it as 200 if no records exist
         $poBoxNumber++; // Increment the PO Box number
 
         // Create new PoBox record with generated PO Box number
@@ -30,7 +31,7 @@ class PoBoxNoController extends Controller
 
         try {
             // Send activation email with the PO Box number
-            Mail::to($request->email)->send(new ActivationEmail($poBoxNumber));
+            Mail::to($request->email)->send(new ActivationEmail($poBoxNumber,$request->name));
         } catch (\Exception $e) {
             // Log the error
             \Log::error('Error sending email: ' . $e->getMessage());
