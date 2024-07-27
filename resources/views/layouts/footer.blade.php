@@ -34,13 +34,16 @@
                     </div>
                 </form>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 col-12 ">
-                <h4 class="footer-head fw-bold">Metodos de Pafo<h4>
-                        <p class="footer-para">Para su mayor comodidad, usted podra pagar sus facturas por medio de
-                            tarjetas VISA y Master Card. Tambien utilizando la Platoforma de YAPPY del banco
-                            General, como a traves de Transferencias ACH.</p>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-12 " id="metodo-de-pago">
+                <h4 class="footer-head fw-bold">Métodos de Pago</h4>
+                        <p class="footer-para">Para su mayor comodidad, usted podrá pagar sus facturas por medio de Tarjetas VISA y
+                      Master Card. También utilizando la Plataforma de YAPPY del Banco General, como a través de
+                       Transferencias ACH.</p>
                         <div class=" d-flex gap-5">
-                            <a href="">
+                        <a href="">
+                                <img src="./assets/images/fa6-brands_cc-visa.png" class="payment1" alt="" style="width: 133px;">
+                            </a>
+                            <!-- <a href="">
                                 <img src="./assets/images/fa6-brands_cc-visa.png" class="payment1" alt="">
                             </a>
                             <a href="">
@@ -48,7 +51,7 @@
                             </a>
                             <a href="">
                                 <img src="./assets/images/yappy-img.png" class="payment3" alt="">
-                            </a>
+                            </a> -->
                         </div>
             </div>
         </div>

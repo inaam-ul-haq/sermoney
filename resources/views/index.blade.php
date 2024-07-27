@@ -2,6 +2,7 @@
 
 
 @section('content')
+{!! NoCaptcha::renderJs() !!}
     <!-- =============header================= -->
 
     <!-- =============hero section================= -->
@@ -17,7 +18,7 @@
                         <!-- Envíos Marítimos y Aéreos -->
                         ENVÍOS MARÍTIMOS Y AÉREOS
                     </p>
-                    <button type="button" class="btn hero-button text-white px-5 py-2 ">
+                    <button type="button" class="btn hero-button text-white px-5 py-2 " onclick="scrollToForm()">
                         <!-- Registrate Gratis -->
                         REGÍSTRATE GRATIS
                     </button>
@@ -41,7 +42,7 @@
                         SOLICITAR P.O. BOX
                     </h1>
 
-                    <form action="{{ route('po-box.store') }}" method="post" class="form row pt-4">
+                    <form action="{{ route('po-box.store') }}" method="post" class="form row pt-4"  id="poBoxForm">
                         @csrf
                         <div class="col-lg-6">
 
@@ -50,7 +51,11 @@
                                 <input type="text" class="form-control py-2 sec2-input" id="input1"
                                     placeholder="Nombre Completo" name="name">
                             </div>
+                            <div class="mb-3">
+            {!! NoCaptcha::display() !!}
+        </div>
                             <button type="submit" class="btn section2-btn mt-lg-3 mb-3">SOLICITAR</button>
+
                         </div>
 
                         <div class="col-lg-6">
@@ -59,7 +64,9 @@
                                 <input type="email" class="form-control py-2 sec2-input" id="input2"
                                     placeholder="Correo Electronico" name="email">
                             </div>
-                        </div>
+                 
+                        </div> 
+</div>
                     </form>
 
 
@@ -296,3 +303,9 @@
     </section>
     <!-- =============footer================= -->
 @endsection
+<script>
+function scrollToForm() {
+        var form = document.getElementById("poBoxForm");
+        form.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>

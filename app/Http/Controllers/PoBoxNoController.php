@@ -14,7 +14,8 @@ class PoBoxNoController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:po_boxes,email'
+            'email' => 'required|email|unique:po_boxes,email',
+            'g-recaptcha-response' => 'required|captcha',
         ]);
 
     

@@ -1,9 +1,23 @@
 <section class="topbar p-3">
     <div class="container-fluid d-flex justify-content-end container-info">
-        <a class="text-white me-4" href="#">Alerta tu paquete</a>
-        <a class="text-white me-4" href="#">Rastrea tu paquete</a>
-        <a class="text-white me-4" href="#">Calcula tu flete</a>
-        <a class="text-white me-4" href="#">Método de Pago</a>
+        <a class="text-white me-4" href="https://dev.sirmoney.net/login">Alerta tu paquete</a>
+        <!-- <a class="text-white me-4" href="#"id="trackPackageLink">Rastrea tu paquete</a> -->
+         
+                    <a class="text-white me-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Rastrea tu paquete
+                       
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" onclick="openTracking('miamiPanama')">Rastrear Paquete Miami – Panama</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="openTracking('globalMiami')">Rastrear Paquete Global – Miami</a></li>
+                    </ul>
+                
+
+
+        <a class="text-white me-4" href="https://api.whatsapp.com/send?phone=50766700607&text=Guarda%20nuestro%20n%C3%BAmero
+%20en%20tus%20contactos%20para%20recibir%20nuestra%20promociones.%20Y%20despu%C3%A
+9s%20env%C3%ADa%20este%20mensaje%20para%20comenzar.">WhatsApp</a>
+        <a class="text-white me-4" href="#" data-target="#metodo-de-pago">Método de Pago</a>
         {{-- <a href="{{route('login')}}" type="button" class="text-white me-4">
                 Login
         </a> --}}
@@ -54,10 +68,35 @@
             </ul>
 
 
-            <a href="{{route('login')}}" typw="button" class="navbar-button btn p-3 px-3">
-               Login User
+            <a href="{{route('login')}}" typw="button" class="navbar-button btn p-3 px-3" style="    width: 13%;
+    height: 50px;">
+              Mi Cuenta
             </a>
 
         </div>
     </div>
 </nav>
+<!-- =============modal================= -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    <script>
+        function openTracking(option) {
+            let url;
+            if (option === 'miamiPanama') {
+                url = 'https://fastcargotracking.com/tracking';
+            } else if (option === 'globalMiami') {
+                url = 'https://parcelsapp.com/widget';
+            }
+            window.open(url, '_blank', 'width=800,height=600');
+        }
+    </script>
+
+
+
+<script>
+        document.querySelector('a[data-target]').addEventListener('click', function(event) {
+            event.preventDefault();
+            const targetId = this.getAttribute('data-target');
+            document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>

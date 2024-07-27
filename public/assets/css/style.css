@@ -568,6 +568,12 @@ text-align: center;
 }
 .payment1 {
   width: 30px;
+  height: auto; /* Maintain aspect ratio */
+  image-rendering: -webkit-optimize-contrast; /* For WebKit (Safari, Chrome) */
+  image-rendering: -moz-crisp-edges;          /* For Firefox */
+  image-rendering: -o-crisp-edges;            /* For Opera */
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
  
 }
 .payment2 {
